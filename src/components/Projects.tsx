@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 
@@ -22,26 +23,32 @@ export const Projects = () => {
         
         // Calculate distance from center
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        const maxDistance = 300; // Maximum distance for effect
+        const maxDistance = 200; // Maximum distance for effect
         
         if (distance < maxDistance) {
-          // Calculate rotation and translation based on cursor position
-          const rotateX = (deltaY / maxDistance) * 10;
-          const rotateY = (deltaX / maxDistance) * -10;
-          const translateX = (deltaX / maxDistance) * 8;
-          const translateY = (deltaY / maxDistance) * 8;
+          // Calculate tilt based on cursor position within the card
+          const tiltX = (deltaY / rect.height) * 15; // Vertical tilt
+          const tiltY = (deltaX / rect.width) * -15; // Horizontal tilt
+          
+          // Parallax translation effect
+          const translateX = (deltaX / maxDistance) * 6;
+          const translateY = (deltaY / maxDistance) * 6;
+          
+          // Scale effect based on distance
+          const scale = 1 + ((maxDistance - distance) / maxDistance) * 0.05;
           
           cardElement.style.transform = `
             perspective(1000px) 
-            rotateX(${rotateX}deg) 
-            rotateY(${rotateY}deg) 
+            rotateX(${tiltX}deg) 
+            rotateY(${tiltY}deg) 
             translateX(${translateX}px) 
             translateY(${translateY}px)
+            scale(${scale})
             translateZ(0)
           `;
         } else {
           // Reset transform when cursor is far away
-          cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0)';
+          cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1) translateZ(0)';
         }
       });
     };
@@ -50,7 +57,7 @@ export const Projects = () => {
       const cards = container.querySelectorAll('.project-card');
       cards.forEach((card) => {
         const cardElement = card as HTMLElement;
-        cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0)';
+        cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1) translateZ(0)';
       });
     };
 
@@ -129,7 +136,7 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="project-card group relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl animate-fade-in overflow-hidden cursor-pointer"
+              className="project-card group relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:shadow-2xl animate-fade-in overflow-hidden cursor-pointer"
               style={{
                 animationDelay: `${index * 150}ms`,
                 animationFillMode: 'both',
@@ -137,15 +144,15 @@ export const Projects = () => {
                 willChange: 'transform'
               }}
             >
-              {/* Animated background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+              {/* Gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
               
-              {/* Subtle border glow effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-200 via-blue-200 to-indigo-200 opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-sm"></div>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
               
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-all duration-300 group-hover:scale-105">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-all duration-300">
                     {project.name}
                   </h3>
                   {project.link !== "#" && (
@@ -153,7 +160,7 @@ export const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-purple-600 transition-all duration-300 hover:scale-110 hover:rotate-12"
+                      className="text-gray-400 hover:text-purple-600 transition-all duration-300 hover:scale-110"
                     >
                       <ExternalLink size={20} />
                     </a>
@@ -165,7 +172,7 @@ export const Projects = () => {
                 </p>
 
                 <div className="mb-4">
-                  <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full group-hover:bg-purple-100 group-hover:scale-105 transition-all duration-300 inline-block">
+                  <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full group-hover:bg-purple-100 transition-all duration-300 inline-block">
                     {project.role}
                   </span>
                 </div>
@@ -174,28 +181,21 @@ export const Projects = () => {
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-xs font-medium text-gray-700 bg-gray-100 px-2 py-1 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105 group-hover:bg-white group-hover:shadow-sm"
-                      style={{
-                        animationDelay: `${(index * 150) + (techIndex * 50)}ms`
-                      }}
+                      className="text-xs font-medium text-gray-700 bg-gray-100 px-2 py-1 rounded-full hover:bg-gray-200 transition-all duration-300 group-hover:bg-white group-hover:shadow-sm"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-
-                {/* Decorative element */}
-                <div className="absolute top-4 right-4 w-2 h-2 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
               </div>
 
-              {/* Animated border on hover */}
-              <div className="absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-              <div className="absolute inset-[2px] rounded-[10px] bg-white -z-10"></div>
+              {/* 3D depth indicator */}
+              <div className="absolute top-2 right-2 w-3 h-3 bg-purple-400 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
 
-        {/* Floating particles animation */}
+        {/* Floating particles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {[...Array(6)].map((_, i) => (
             <div
