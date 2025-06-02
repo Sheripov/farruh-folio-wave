@@ -1,8 +1,68 @@
-
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 export const Projects = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const cards = container.querySelectorAll('.project-card');
+      
+      cards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        const rect = cardElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        // Calculate distance from center
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const maxDistance = 300; // Maximum distance for effect
+        
+        if (distance < maxDistance) {
+          // Calculate rotation and translation based on cursor position
+          const rotateX = (deltaY / maxDistance) * 10;
+          const rotateY = (deltaX / maxDistance) * -10;
+          const translateX = (deltaX / maxDistance) * 8;
+          const translateY = (deltaY / maxDistance) * 8;
+          
+          cardElement.style.transform = `
+            perspective(1000px) 
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg) 
+            translateX(${translateX}px) 
+            translateY(${translateY}px)
+            translateZ(0)
+          `;
+        } else {
+          // Reset transform when cursor is far away
+          cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0)';
+        }
+      });
+    };
+
+    const handleMouseLeave = () => {
+      const cards = container.querySelectorAll('.project-card');
+      cards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) translateZ(0)';
+      });
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   const projects = [
     {
       name: "DevFlow",
@@ -65,14 +125,16 @@ export const Projects = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full animate-scale-in"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 animate-fade-in overflow-hidden"
+              className="project-card group relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl animate-fade-in overflow-hidden cursor-pointer"
               style={{
                 animationDelay: `${index * 150}ms`,
-                animationFillMode: 'both'
+                animationFillMode: 'both',
+                transformStyle: 'preserve-3d',
+                willChange: 'transform'
               }}
             >
               {/* Animated background gradient on hover */}
