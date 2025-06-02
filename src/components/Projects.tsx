@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 
@@ -117,20 +116,20 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-black overflow-hidden">
+    <section id="projects" className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full animate-scale-in"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full animate-scale-in"></div>
         </div>
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="project-card group relative bg-gray-900 border border-gray-800 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-900/50 animate-fade-in overflow-hidden cursor-pointer"
+              className="project-card group relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl animate-fade-in overflow-hidden cursor-pointer"
               style={{
                 animationDelay: `${index * 150}ms`,
                 animationFillMode: 'both',
@@ -139,14 +138,14 @@ export const Projects = () => {
               }}
             >
               {/* Animated background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
               
               {/* Subtle border glow effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-sm"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-200 via-blue-200 to-indigo-200 opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-sm"></div>
               
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-gray-300 transition-all duration-300 group-hover:scale-105">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-all duration-300 group-hover:scale-105">
                     {project.name}
                   </h3>
                   {project.link !== "#" && (
@@ -154,19 +153,19 @@ export const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-gray-300 transition-all duration-300 hover:scale-110 hover:rotate-12"
+                      className="text-gray-400 hover:text-purple-600 transition-all duration-300 hover:scale-110 hover:rotate-12"
                     >
                       <ExternalLink size={20} />
                     </a>
                   )}
                 </div>
 
-                <p className="text-gray-400 mb-4 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                   {project.description}
                 </p>
 
                 <div className="mb-4">
-                  <span className="text-xs font-semibold text-black bg-gray-300 px-3 py-1 rounded-full group-hover:bg-white group-hover:scale-105 transition-all duration-300 inline-block">
+                  <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full group-hover:bg-purple-100 group-hover:scale-105 transition-all duration-300 inline-block">
                     {project.role}
                   </span>
                 </div>
@@ -175,7 +174,7 @@ export const Projects = () => {
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-xs font-medium text-gray-300 bg-gray-800 px-2 py-1 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 group-hover:bg-gray-700 group-hover:shadow-sm border border-gray-700"
+                      className="text-xs font-medium text-gray-700 bg-gray-100 px-2 py-1 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105 group-hover:bg-white group-hover:shadow-sm"
                       style={{
                         animationDelay: `${(index * 150) + (techIndex * 50)}ms`
                       }}
@@ -186,12 +185,12 @@ export const Projects = () => {
                 </div>
 
                 {/* Decorative element */}
-                <div className="absolute top-4 right-4 w-2 h-2 bg-gray-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+                <div className="absolute top-4 right-4 w-2 h-2 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
               </div>
 
               {/* Animated border on hover */}
-              <div className="absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-              <div className="absolute inset-[2px] rounded-[10px] bg-gray-900 -z-10"></div>
+              <div className="absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+              <div className="absolute inset-[2px] rounded-[10px] bg-white -z-10"></div>
             </div>
           ))}
         </div>
@@ -201,7 +200,7 @@ export const Projects = () => {
           {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-gray-500 rounded-full opacity-30 animate-float"
+              className="absolute w-1 h-1 bg-purple-300 rounded-full opacity-30 animate-float"
               style={{
                 left: `${20 + i * 15}%`,
                 top: `${30 + (i % 2) * 40}%`,
