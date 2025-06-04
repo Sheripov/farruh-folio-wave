@@ -1,0 +1,564 @@
+/* Projects Section */
+.projectsSection {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container */
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleUnderline {
+  width: 6rem;
+  height: 0.25rem;
+  background: #60a5fa;
+  margin: 0 auto;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.625;
+}
+
+/* Projects Grid */
+.projectsGrid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Project Card */
+.projectCard {
+  position: relative;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.projectCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Project Card Variants */
+.projectCard.blue .gradientOverlay {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+}
+
+.projectCard.emerald .gradientOverlay {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%);
+}
+
+.projectCard.purple .gradientOverlay {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+}
+
+.projectCard.orange .gradientOverlay {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
+
+/* Gradient Overlay */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  transition: opacity 2.3s ease;
+  border-radius: 1rem;
+}
+
+.projectCard:hover .gradientOverlay {
+  opacity: 1;
+}
+
+/* Shimmer Effect */
+.shimmerEffect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  opacity: 0.8;
+  transition: all 0.5s ease;
+  border-radius: 1rem;
+  transform: translateX(100%) skewX(-12deg);
+}
+
+.projectCard:hover .shimmerEffect {
+  opacity: 0.8;
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 1s ease;
+}
+
+/* Card Content */
+.cardContent {
+  position: relative;
+  z-index: 10;
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.cardHeaderContent {
+  flex: 1;
+}
+
+.cardTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.categoryBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.categoryBadge.blue {
+  color: #93c5fd;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+}
+
+.categoryBadge.emerald {
+  color: #6ee7b7;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%);
+}
+
+.categoryBadge.purple {
+  color: #c4b5fd;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+}
+
+.categoryBadge.orange {
+  color: #fdba74;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
+
+.iconContainer {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.iconContainer.blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+}
+
+.iconContainer.emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%);
+}
+
+.iconContainer.purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+}
+
+.iconContainer.orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
+
+.projectCard:hover .iconContainer {
+  transform: scale(1.1);
+}
+
+.icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon.blue {
+  color: #93c5fd;
+}
+
+.icon.emerald {
+  color: #6ee7b7;
+}
+
+.icon.purple {
+  color: #c4b5fd;
+}
+
+.icon.orange {
+  color: #fdba74;
+}
+
+/* Project Info */
+.projectInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.infoIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Description */
+.description {
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+  line-height: 1.625;
+  transition: color 0.3s ease;
+}
+
+.projectCard:hover .description {
+  color: #e5e7eb;
+}
+
+/* Key Highlights */
+.highlightsSection {
+  margin-bottom: 1.5rem;
+}
+
+.highlightsTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlightsTitle.blue {
+  color: #93c5fd;
+}
+
+.highlightsTitle.emerald {
+  color: #6ee7b7;
+}
+
+.highlightsTitle.purple {
+  color: #c4b5fd;
+}
+
+.highlightsTitle.orange {
+  color: #fdba74;
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.highlightItem {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlightDot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+}
+
+.highlightDot.blue {
+  background: #93c5fd;
+}
+
+.highlightDot.emerald {
+  background: #6ee7b7;
+}
+
+.highlightDot.purple {
+  background: #c4b5fd;
+}
+
+.highlightDot.orange {
+  background: #fdba74;
+}
+
+/* Technologies */
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.techTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #d1d5db;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.techTag:hover {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.techTag.blue:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.2);
+}
+
+.techTag.emerald:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.2);
+}
+
+.techTag.purple:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(139, 92, 246, 0.2);
+}
+
+.techTag.orange:hover {
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(249, 115, 22, 0.2);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.link:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-offset: 0;
+}
+
+.link.blue {
+  color: #93c5fd;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+}
+
+.link.blue:hover {
+  color: white;
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
+}
+
+.link.blue:focus-visible {
+  ring-color: rgba(59, 130, 246, 0.5);
+}
+
+.link.emerald {
+  color: #6ee7b7;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%);
+}
+
+.link.emerald:hover {
+  color: white;
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.link.emerald:focus-visible {
+  ring-color: rgba(16, 185, 129, 0.5);
+}
+
+.link.purple {
+  color: #c4b5fd;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+}
+
+.link.purple:hover {
+  color: white;
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.2);
+}
+
+.link.purple:focus-visible {
+  ring-color: rgba(139, 92, 246, 0.5);
+}
+
+.link.orange {
+  color: #fdba74;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
+
+.link.orange:hover {
+  color: white;
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
+}
+
+.link.orange:focus-visible {
+  ring-color: rgba(249, 115, 22, 0.5);
+}
+
+.linkIcon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.link:hover .linkIcon {
+  transform: scale(1.1);
+}
+
+/* Decorative Elements */
+.decorativeElement1 {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.decorativeElement1.blue {
+  background: #93c5fd;
+}
+
+.decorativeElement1.emerald {
+  background: #6ee7b7;
+}
+
+.decorativeElement1.purple {
+  background: #c4b5fd;
+}
+
+.decorativeElement1.orange {
+  background: #fdba74;
+}
+
+.projectCard:hover .decorativeElement1 {
+  opacity: 0.6;
+}
+
+.decorativeElement2 {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.decorativeElement2.blue {
+  background: #93c5fd;
+}
+
+.decorativeElement2.emerald {
+  background: #6ee7b7;
+}
+
+.decorativeElement2.purple {
+  background: #c4b5fd;
+}
+
+.decorativeElement2.orange {
+  background: #fdba74;
+}
+
+.projectCard:hover .decorativeElement2 {
+  opacity: 0.4;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+} 

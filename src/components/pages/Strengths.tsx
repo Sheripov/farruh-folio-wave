@@ -55,12 +55,6 @@ export const Strengths = () => {
 
   return (
     <section id="strengths" className="py-20 bg-gradient-to-br from-slate-900 via-indigo-900/20 to-slate-900 relative overflow-hidden">
-      {/* Soft background elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/3 via-amber-500/3 via-rose-500/3 to-violet-500/3"></div>
-      <div className="absolute top-0 left-1/3 w-96 h-96 bg-emerald-500/8 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-violet-500/8 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/6 rounded-full blur-3xl"></div>
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -110,35 +104,6 @@ export const Strengths = () => {
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl transform -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-1000"></div>
             </div>
-          ))}
-        </div>
-
-        {/* Bottom decorative section */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-full border border-white/10">
-            <Star className="h-5 w-5 text-yellow-300" />
-            <span className="text-gray-300 text-sm font-medium">Driven by excellence and continuous improvement</span>
-            <Star className="h-5 w-5 text-yellow-300" />
-          </div>
-        </div>
-
-        {/* Floating particles */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`absolute w-1 h-1 rounded-full opacity-30 animate-float ${
-                i % 4 === 0 ? 'bg-emerald-300' :
-                i % 4 === 1 ? 'bg-amber-300' :
-                i % 4 === 2 ? 'bg-rose-300' : 'bg-violet-300'
-              }`}
-              style={{
-                left: `${15 + i * 15}%`,
-                top: `${25 + (i % 2) * 50}%`,
-                animationDelay: `${i * 1.2}s`,
-                animationDuration: `${4 + i * 0.5}s`
-              }}
-            ></div>
           ))}
         </div>
       </div>

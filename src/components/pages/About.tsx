@@ -63,14 +63,7 @@ export const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-gray-900/50 to-slate-900 relative overflow-hidden">
-      {/* Soft background elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/3 via-emerald-500/3 via-purple-500/3 to-orange-500/3"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/8 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 right-1/3 w-96 h-96 bg-emerald-500/6 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-orange-500/6 rounded-full blur-3xl"></div>
-      
+    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-gray-900/50 to-slate-900 relative overflow-hidden">      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -206,47 +199,6 @@ export const About = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Bottom section */}
-          <div className="text-center">
-            <div className="inline-flex flex-col items-center gap-4 px-8 py-6 bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10">
-              <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-300" />
-                <span className="text-gray-300 text-sm font-medium">Always excited to work on challenging projects and learn new technologies</span>
-                <Star className="h-5 w-5 text-yellow-300" />
-              </div>
-              <div className="flex flex-wrap justify-center gap-2 mt-2">
-                {["Collaboration", "Innovation", "Quality", "Growth"].map((tag, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 bg-gradient-to-r from-white/10 to-white/20 rounded-full text-xs text-gray-300 border border-white/20"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Floating particles */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className={`absolute w-1 h-1 rounded-full opacity-30 animate-float ${
-                  i % 4 === 0 ? 'bg-blue-300' :
-                  i % 4 === 1 ? 'bg-emerald-300' :
-                  i % 4 === 2 ? 'bg-purple-300' : 'bg-orange-300'
-                }`}
-                style={{
-                  left: `${10 + i * 15}%`,
-                  top: `${20 + (i % 3) * 30}%`,
-                  animationDelay: `${i * 0.8}s`,
-                  animationDuration: `${3 + i * 0.3}s`
-                }}
-              ></div>
-            ))}
           </div>
         </div>
       </div>

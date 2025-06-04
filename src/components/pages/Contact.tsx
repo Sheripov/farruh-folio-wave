@@ -57,12 +57,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 relative overflow-hidden">
-      {/* Soft background elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-blue-500/5"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
-      
+    <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 relative overflow-hidden">      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -212,7 +207,7 @@ export const Contact = () => {
       {/* Footer */}
       <div className="mt-20 pt-8 border-t border-white/10 text-center relative z-10">
         <p className="text-gray-400 text-sm">
-          © 2024 Farruh Sheripov. Built with React and Tailwind CSS.
+          © 2025 FusionCode. Built with React and Tailwind CSS.
         </p>
       </div>
     </section>
