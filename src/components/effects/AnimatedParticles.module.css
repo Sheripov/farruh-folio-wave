@@ -1,0 +1,10 @@
+.canvas {
+    position: fixed;
+    inset: 100;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+    will-change: auto;
+    width: 100vw;
+    height: 100vh;
+  }
