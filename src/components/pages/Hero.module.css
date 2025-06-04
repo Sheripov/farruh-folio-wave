@@ -253,11 +253,14 @@
   gap: 1rem;
   justify-content: center;
   margin-bottom: 5rem;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 640px) {
   .buttonContainer {
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 
