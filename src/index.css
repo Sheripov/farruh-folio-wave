@@ -308,7 +308,11 @@ nav.nav-fixed {
   text-align: center;
   position: relative;
   z-index: 10;
-  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 1) 0%,
+    rgba(15, 23, 42, 1) 100%
+  );
 }
 .footerText {
   color: rgb(156, 163, 175);
