@@ -1,0 +1,381 @@
+.contact {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(to right, white, rgb(196, 181, 253), rgb(251, 207, 232));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleUnderline {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, rgb(196, 181, 253), rgb(251, 207, 232), rgb(196, 181, 253));
+  margin: 0 auto;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: rgb(209, 213, 219);
+  max-width: 32rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.contentGrid {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  height: 100%;
+  position: relative;
+}
+
+.infoCardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.infoCardDescription {
+  color: rgb(209, 213, 219);
+  margin-bottom: 2rem;
+  line-height: 1.75;
+}
+
+.contactMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contactMethod:hover {
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.emailMethod {
+  background: linear-gradient(to right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+.emailMethod:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 10px 25px -3px rgba(168, 85, 247, 0.2);
+}
+
+.phoneMethod {
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+}
+
+.phoneMethod:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.2);
+}
+
+.locationMethod {
+  background: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1));
+}
+
+.locationMethod:hover {
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 10px 25px -3px rgba(236, 72, 153, 0.2);
+}
+
+.methodIcon {
+  padding: 0.75rem;
+  border-radius: 9999px;
+  transition: transform 0.3s ease;
+}
+
+.contactMethod:hover .methodIcon {
+  transform: scale(1.1);
+}
+
+.emailIcon {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.phoneIcon {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+}
+
+.locationIcon {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2));
+}
+
+.methodDetails h4 {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.methodDetails a,
+.methodDetails span {
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.emailLink {
+  color: rgb(196, 181, 253);
+}
+
+.emailLink:hover {
+  color: rgb(221, 214, 254);
+}
+
+.phoneLink {
+  color: rgb(147, 197, 253);
+}
+
+.phoneLink:hover {
+  color: rgb(191, 219, 254);
+}
+
+.locationText {
+  color: rgb(251, 207, 232);
+}
+
+.formCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  height: 100%;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(209, 213, 219);
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(196, 181, 253);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+}
+
+.input::placeholder {
+  color: rgb(75, 85, 99);
+}
+
+.input:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.3);
+}
+
+.textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(196, 181, 253);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+  resize: none;
+  min-height: 150px;
+}
+
+.textarea::placeholder {
+  color: rgb(75, 85, 99);
+}
+
+.textarea:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.3);
+}
+
+.submitButton {
+  width: 100%;
+  background: linear-gradient(to right, rgb(168, 85, 247), rgb(236, 72, 153));
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton:hover {
+  background: linear-gradient(to right, rgb(147, 51, 234), rgb(219, 39, 119));
+  box-shadow: 0 10px 25px -3px rgba(168, 85, 247, 0.25);
+}
+
+.submitButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid transparent;
+  border-bottom: 2px solid white;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Icon styles */
+.heartIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: rgb(244, 114, 182);
+}
+
+.mailIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: rgb(196, 181, 253);
+}
+
+.phoneIconSvg {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: rgb(147, 197, 253);
+}
+
+.mapIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: rgb(251, 207, 232);
+}
+
+.sendIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+} 

@@ -1,0 +1,461 @@
+/* Skills Section */
+.skillsSection {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(to right, white, rgb(196, 181, 253), rgb(167, 243, 213), rgb(196, 181, 253), rgb(254, 215, 170), rgb(253, 164, 175), rgb(199, 210, 254));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleUnderline {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, rgb(96, 165, 250), rgb(52, 211, 153), rgb(168, 85, 247), rgb(251, 146, 60), rgb(244, 63, 94), rgb(129, 140, 248));
+  margin: 0 auto;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: rgb(209, 213, 219);
+  max-width: 32rem;
+  margin: 0 auto;
+  line-height: 1.625;
+}
+
+/* Skills Grid */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Category Card */
+.categoryCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.categoryCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.25rem);
+}
+
+/* Background gradient overlays for different categories */
+.categoryCard.blue .gradientOverlay {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.categoryCard.emerald .gradientOverlay {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+}
+
+.categoryCard.purple .gradientOverlay {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.categoryCard.orange .gradientOverlay {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
+}
+
+.categoryCard.rose .gradientOverlay {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.categoryCard.indigo .gradientOverlay {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(59, 130, 246, 0.2));
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 1rem;
+}
+
+.categoryCard:hover .gradientOverlay {
+  opacity: 1;
+}
+
+/* Category Header */
+.categoryHeader {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconContainer {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.categoryCard.blue .iconContainer {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.categoryCard.emerald .iconContainer {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+}
+
+.categoryCard.purple .iconContainer {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.categoryCard.orange .iconContainer {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
+}
+
+.categoryCard.rose .iconContainer {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.categoryCard.indigo .iconContainer {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(59, 130, 246, 0.2));
+}
+
+.categoryCard:hover .iconContainer {
+  transform: scale(1.1);
+}
+
+.categoryCard.blue:hover .iconContainer {
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
+}
+
+.categoryCard.emerald:hover .iconContainer {
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.categoryCard.purple:hover .iconContainer {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2);
+}
+
+.categoryCard.orange:hover .iconContainer {
+  border-color: rgba(251, 146, 60, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
+}
+
+.categoryCard.rose:hover .iconContainer {
+  border-color: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.2);
+}
+
+.categoryCard.indigo:hover .iconContainer {
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+}
+
+.categoryIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.categoryCard.blue .categoryIcon {
+  color: rgb(147, 197, 253);
+}
+
+.categoryCard.emerald .categoryIcon {
+  color: rgb(110, 231, 183);
+}
+
+.categoryCard.purple .categoryIcon {
+  color: rgb(196, 181, 253);
+}
+
+.categoryCard.orange .categoryIcon {
+  color: rgb(253, 186, 116);
+}
+
+.categoryCard.rose .categoryIcon {
+  color: rgb(251, 113, 133);
+}
+
+.categoryCard.indigo .categoryIcon {
+  color: rgb(165, 180, 252);
+}
+
+.categoryCard:hover .categoryIcon {
+  transform: scale(1.1);
+}
+
+.categoryTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.categoryCard.blue:hover .categoryTitle {
+  color: rgb(147, 197, 253);
+}
+
+.categoryCard.emerald:hover .categoryTitle {
+  color: rgb(110, 231, 183);
+}
+
+.categoryCard.purple:hover .categoryTitle {
+  color: rgb(196, 181, 253);
+}
+
+.categoryCard.orange:hover .categoryTitle {
+  color: rgb(253, 186, 116);
+}
+
+.categoryCard.rose:hover .categoryTitle {
+  color: rgb(251, 113, 133);
+}
+
+.categoryCard.indigo:hover .categoryTitle {
+  color: rgb(165, 180, 252);
+}
+
+/* Skills List */
+.skillsList {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.categoryCard.blue .skillItem:hover {
+  border-color: rgba(147, 197, 253, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.2);
+}
+
+.categoryCard.emerald .skillItem:hover {
+  border-color: rgba(110, 231, 183, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.2);
+}
+
+.categoryCard.purple .skillItem:hover {
+  border-color: rgba(196, 181, 253, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(168, 85, 247, 0.2);
+}
+
+.categoryCard.orange .skillItem:hover {
+  border-color: rgba(253, 186, 116, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(249, 115, 22, 0.2);
+}
+
+.categoryCard.rose .skillItem:hover {
+  border-color: rgba(251, 113, 133, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(244, 63, 94, 0.2);
+}
+
+.categoryCard.indigo .skillItem:hover {
+  border-color: rgba(165, 180, 252, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(99, 102, 241, 0.2);
+}
+
+.skillDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.categoryCard.blue .skillDot {
+  background-color: rgb(147, 197, 253);
+}
+
+.categoryCard.emerald .skillDot {
+  background-color: rgb(110, 231, 183);
+}
+
+.categoryCard.purple .skillDot {
+  background-color: rgb(196, 181, 253);
+}
+
+.categoryCard.orange .skillDot {
+  background-color: rgb(253, 186, 116);
+}
+
+.categoryCard.rose .skillDot {
+  background-color: rgb(251, 113, 133);
+}
+
+.categoryCard.indigo .skillDot {
+  background-color: rgb(165, 180, 252);
+}
+
+.skillItem:hover .skillDot {
+  transform: scale(1.25);
+}
+
+.skillText {
+  color: rgb(209, 213, 219);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.skillItem:hover .skillText {
+  color: rgb(229, 231, 235);
+}
+
+/* Decorative Elements */
+.decorativeDot {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.categoryCard.blue .decorativeDot {
+  background-color: rgb(147, 197, 253);
+}
+
+.categoryCard.emerald .decorativeDot {
+  background-color: rgb(110, 231, 183);
+}
+
+.categoryCard.purple .decorativeDot {
+  background-color: rgb(196, 181, 253);
+}
+
+.categoryCard.orange .decorativeDot {
+  background-color: rgb(253, 186, 116);
+}
+
+.categoryCard.rose .decorativeDot {
+  background-color: rgb(251, 113, 133);
+}
+
+.categoryCard.indigo .decorativeDot {
+  background-color: rgb(165, 180, 252);
+}
+
+.categoryCard:hover .decorativeDot {
+  opacity: 0.6;
+}
+
+/* Shimmer Effect */
+.shimmerEffect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: all 0.5s ease;
+  border-radius: 1rem;
+  transform: skewX(-12deg) translateX(100%);
+}
+
+.categoryCard:hover .shimmerEffect {
+  opacity: 0.2;
+  transform: skewX(-12deg) translateX(-100%);
+  transition: transform 1s ease;
+}
+
+/* Animation delays */
+.categoryCard:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.categoryCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.categoryCard:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.categoryCard:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.categoryCard:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.categoryCard:nth-child(6) {
+  animation-delay: 0.5s;
+} 

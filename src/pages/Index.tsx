@@ -56,6 +56,15 @@ const Index = () => {
           <Contact />
         </div>
       </ParallaxBackground>
+      
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container mx-auto px-4">
+          <p className="footerText">
+            © 2025 FusionCode. Built with React and Tailwind CSS.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

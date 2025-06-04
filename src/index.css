@@ -301,3 +301,16 @@ nav.nav-fixed {
 .dark textarea:focus::placeholder {
   color: rgba(156, 163, 175, 0.3) !important; /* even softer when focused */
 }
+
+.footer {
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+}
+.footerText {
+  color: rgb(156, 163, 175);
+  font-size: 0.875rem;
+}

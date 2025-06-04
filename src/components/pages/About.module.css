@@ -1,0 +1,631 @@
+/* About Section Styles */
+.aboutSection {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(to right, white, rgb(191, 219, 254), rgb(167, 243, 208), rgb(196, 181, 253), rgb(254, 215, 170));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleUnderline {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, rgb(96, 165, 250), rgb(52, 211, 153), rgb(168, 85, 247), rgb(251, 146, 60));
+  margin: 0 auto;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+/* Main Content */
+.mainContent {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.contentGrid {
+  display: grid;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Left Column */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Profile Card */
+.profileCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.profileCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.profileCardBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1), rgba(139, 92, 246, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 1rem;
+}
+
+.profileCard:hover .profileCardBgOverlay {
+  opacity: 1;
+}
+
+.profileCardShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 1rem;
+  transform: skewX(-12deg) translateX(100%);
+  transition: transform 1s ease, opacity 0.5s ease;
+}
+
+.profileCard:hover .profileCardShimmer {
+  opacity: 0.2;
+  transform: skewX(-12deg) translateX(-100%);
+}
+
+.profileCardContent {
+  position: relative;
+  z-index: 10;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profileIcon {
+  padding: 0.75rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.profileCard:hover .profileIcon {
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: scale(1.1);
+}
+
+.profileIconSvg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: rgb(147, 197, 253);
+}
+
+.profileName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.profileCard:hover .profileName {
+  color: rgb(147, 197, 253);
+}
+
+.profileDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: rgb(209, 213, 219);
+  line-height: 1.625;
+}
+
+.profileDescription p {
+  transition: color 0.3s ease;
+}
+
+.profileCard:hover .profileDescription p {
+  color: rgb(229, 231, 235);
+}
+
+.highlightBlue {
+  color: rgb(147, 197, 253);
+  font-weight: 600;
+}
+
+.highlightEmerald {
+  color: rgb(110, 231, 183);
+  font-weight: 600;
+}
+
+.highlightPurple {
+  color: rgb(196, 181, 253);
+  font-weight: 600;
+}
+
+.highlightOrange {
+  color: rgb(253, 186, 116);
+  font-weight: 600;
+}
+
+/* Interests Section */
+.interestsSection {
+  margin-top: 1.5rem;
+}
+
+.interestsTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(147, 197, 253);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.interestsTitleIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.interestsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.interestItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.interestItem:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.interestIcon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.interestItem:hover .interestIcon {
+  transform: scale(1.1);
+}
+
+.interestIconBlue {
+  color: rgb(147, 197, 253);
+}
+
+.interestIconEmerald {
+  color: rgb(110, 231, 183);
+}
+
+.interestIconPurple {
+  color: rgb(196, 181, 253);
+}
+
+.interestIconOrange {
+  color: rgb(253, 186, 116);
+}
+
+.interestText {
+  font-size: 0.75rem;
+  color: rgb(209, 213, 219);
+  transition: color 0.3s ease;
+}
+
+.interestItem:hover .interestText {
+  color: rgb(229, 231, 235);
+}
+
+.profileCardDecorative {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: rgb(147, 197, 253);
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profileCard:hover .profileCardDecorative {
+  opacity: 0.6;
+}
+
+/* Quick Stats */
+.quickStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.statCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.statCard:hover {
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover .statNumber {
+  transform: scale(1.1);
+}
+
+.statNumberEmerald {
+  color: rgb(110, 231, 183);
+}
+
+.statNumberPurple {
+  color: rgb(196, 181, 253);
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: rgb(156, 163, 175);
+}
+
+/* Right Column */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contactTitleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgb(147, 197, 253);
+}
+
+/* Contact Info Cards */
+.contactCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.contactCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.contactCardBgOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0.75rem;
+}
+
+.contactCard:hover .contactCardBgOverlay {
+  opacity: 1;
+}
+
+.contactCardBgBlue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.contactCardBgEmerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+}
+
+.contactCardBgPurple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(124, 58, 237, 0.2));
+}
+
+.contactCardBgOrange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
+}
+
+.contactCardShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 0.75rem;
+  transform: skewX(-12deg) translateX(100%);
+  transition: transform 1s ease, opacity 0.5s ease;
+}
+
+.contactCard:hover .contactCardShimmer {
+  opacity: 0.2;
+  transform: skewX(-12deg) translateX(-100%);
+}
+
+.contactCardContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contactIcon {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.contactCard:hover .contactIcon {
+  transform: scale(1.1);
+}
+
+.contactIconBlue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.contactCard:hover .contactIconBlue {
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
+}
+
+.contactIconEmerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+}
+
+.contactCard:hover .contactIconEmerald {
+  border-color: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.contactIconPurple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(124, 58, 237, 0.2));
+}
+
+.contactCard:hover .contactIconPurple {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.2);
+}
+
+.contactIconOrange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
+}
+
+.contactCard:hover .contactIconOrange {
+  border-color: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
+}
+
+.contactIconSvg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.contactIconSvgBlue {
+  color: rgb(147, 197, 253);
+}
+
+.contactIconSvgEmerald {
+  color: rgb(110, 231, 183);
+}
+
+.contactIconSvgPurple {
+  color: rgb(196, 181, 253);
+}
+
+.contactIconSvgOrange {
+  color: rgb(253, 186, 116);
+}
+
+.contactInfo {
+  flex: 1;
+}
+
+.contactInfoTitle {
+  font-weight: 600;
+  color: white;
+  transition: color 0.3s ease;
+  margin-bottom: 0.25rem;
+}
+
+.contactCard:hover .contactInfoTitle {
+  color: var(--title-hover-color);
+}
+
+.contactInfoTitleBlue {
+  --title-hover-color: rgb(147, 197, 253);
+}
+
+.contactInfoTitleEmerald {
+  --title-hover-color: rgb(110, 231, 183);
+}
+
+.contactInfoTitlePurple {
+  --title-hover-color: rgb(196, 181, 253);
+}
+
+.contactInfoTitleOrange {
+  --title-hover-color: rgb(253, 186, 116);
+}
+
+.contactInfoDescription {
+  font-size: 0.875rem;
+  color: rgb(156, 163, 175);
+  margin-bottom: 0.25rem;
+}
+
+.contactInfoValue {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contactInfoValueBlue {
+  color: rgb(147, 197, 253);
+}
+
+.contactInfoValueEmerald {
+  color: rgb(110, 231, 183);
+}
+
+.contactInfoValuePurple {
+  color: rgb(196, 181, 253);
+}
+
+.contactInfoValueOrange {
+  color: rgb(253, 186, 116);
+}
+
+.contactLink {
+  transition: color 0.3s ease;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.contactLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.contactLink:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  outline-offset: 0;
+}
+
+.contactCardDecorative {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contactCard:hover .contactCardDecorative {
+  opacity: 0.6;
+}
+
+.contactCardDecorativeBlue {
+  background-color: rgb(147, 197, 253);
+}
+
+.contactCardDecorativeEmerald {
+  background-color: rgb(110, 231, 183);
+}
+
+.contactCardDecorativePurple {
+  background-color: rgb(196, 181, 253);
+}
+
+.contactCardDecorativeOrange {
+  background-color: rgb(253, 186, 116);
+}
+
+/* Animation delays */
+.contactCard:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.contactCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.contactCard:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.contactCard:nth-child(4) {
+  animation-delay: 0.3s;
+} 

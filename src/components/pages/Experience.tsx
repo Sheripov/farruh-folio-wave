@@ -1,5 +1,6 @@
 import React from 'react';
 import { Briefcase, Calendar, TrendingUp, Users, Award, Star } from 'lucide-react';
+import styles from './Experience.module.css';
 
 export const Experience = () => {
   const experiences = [
@@ -17,13 +18,7 @@ export const Experience = () => {
         "Implemented automated testing and CI/CD pipelines improving deployment reliability by 95%"
       ],
       technologies: ["Django", "GCP", "PostgreSQL", "Docker", "Kubernetes", "Terraform"],
-      color: "blue",
-      gradient: "from-blue-500/20 to-cyan-500/20",
-      borderColor: "blue-500/20",
-      hoverBorder: "blue-400/40",
-      iconColor: "blue-300",
-      shadow: "blue-500/20",
-      bgGradient: "from-blue-500/8 to-cyan-500/8"
+      color: "blue"
     },
     {
       company: "TechFlow Solutions",
@@ -39,13 +34,7 @@ export const Experience = () => {
         "Collaborated with frontend teams to deliver seamless user experiences"
       ],
       technologies: ["Django REST", "PostgreSQL", "Redis", "Docker", "Jenkins", "AWS"],
-      color: "emerald",
-      gradient: "from-emerald-500/20 to-teal-500/20",
-      borderColor: "emerald-500/20",
-      hoverBorder: "emerald-400/40",
-      iconColor: "emerald-300",
-      shadow: "emerald-500/20",
-      bgGradient: "from-emerald-500/8 to-teal-500/8"
+      color: "emerald"
     },
     {
       company: "Digital Innovations Ltd",
@@ -61,90 +50,84 @@ export const Experience = () => {
         "Participated in code reviews and learned best practices from senior developers"
       ],
       technologies: ["Django", "MySQL", "JavaScript", "Git", "Linux", "Agile"],
-      color: "purple",
-      gradient: "from-purple-500/20 to-violet-500/20",
-      borderColor: "purple-500/20",
-      hoverBorder: "purple-400/40",
-      iconColor: "purple-300",
-      shadow: "purple-500/20",
-      bgGradient: "from-purple-500/8 to-violet-500/8"
+      color: "purple"
     }
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-slate-900 via-gray-900/50 to-slate-900 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="experience" className={styles.experience}>
+      <div className={styles.container}>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-blue-200 via-emerald-200 to-purple-200 bg-clip-text text-transparent mb-4">
+        <div className={styles.header}>
+          <h2 className={styles.title}>
             Professional Experience
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <div className={styles.titleUnderline}></div>
+          <p className={styles.subtitle}>
             A journey of growth, innovation, and technical excellence in Python development and cloud architecture.
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="relative">
+        <div className={styles.experienceContainer}>
+          <div className={styles.timelineWrapper}>
             {/* Enhanced Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-emerald-400 to-purple-400 rounded-full hidden md:block opacity-60"></div>
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400/20 via-emerald-400/20 to-purple-400/20 rounded-full hidden md:block blur-sm"></div>
+            <div className={styles.timelineLine}></div>
+            <div className={styles.timelineLineBlur}></div>
 
             {experiences.map((exp, index) => (
               <div 
                 key={index} 
-                className="relative mb-16 md:ml-20 group"
+                className={styles.experienceItem}
                 style={{
                   animationDelay: `${index * 0.2}s`
                 }}
               >
                 {/* Enhanced Timeline dot */}
-                <div className={`absolute -left-24 top-8 w-6 h-6 bg-gradient-to-br ${exp.gradient} rounded-full border-4 border-slate-900 shadow-lg hidden md:flex items-center justify-center group-hover:scale-125 transition-transform duration-300`}>
-                  <div className={`w-2 h-2 bg-${exp.iconColor} rounded-full`}></div>
+                <div className={`${styles.timelineDot} ${styles[`${exp.color}Dot`]}`}>
+                  <div className={`${styles.timelineDotInner} ${styles[`${exp.color}DotInner`]}`}></div>
                 </div>
                 
                 {/* Experience Card */}
-                <div className={`bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:shadow-2xl transition-all duration-500 overflow-hidden group-hover:-translate-y-1`}>
+                <div className={styles.experienceCard}>
                   {/* Background gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`}></div>
+                  <div className={`${styles.cardOverlay} ${styles[`${exp.color}Overlay`]}`}></div>
                   
                   {/* Shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl transform -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-1000"></div>
+                  <div className={styles.shimmerEffect}></div>
 
-                  <div className="relative z-10">
+                  <div className={styles.cardContent}>
                     {/* Header */}
-                    <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className={`p-2 bg-gradient-to-br ${exp.gradient} rounded-lg border border-white/10 group-hover:border-${exp.borderColor} group-hover:scale-110 transition-all duration-300`}>
-                            <Briefcase className={`h-5 w-5 text-${exp.iconColor}`} />
+                    <div className={styles.cardHeader}>
+                      <div className={styles.headerLeft}>
+                        <div className={styles.titleRow}>
+                          <div className={`${styles.iconWrapper} ${styles[`${exp.color}Icon`]}`}>
+                            <Briefcase className={`${styles.icon} ${styles[`${exp.color}IconColor`]}`} />
                           </div>
-                          <h3 className={`text-2xl font-bold text-white group-hover:text-${exp.iconColor} transition-colors duration-300`}>
+                          <h3 className={`${styles.jobTitle} ${styles[`${exp.color}Title`]}`}>
                             {exp.title}
                           </h3>
                         </div>
-                        <h4 className={`text-xl font-semibold text-${exp.iconColor} mb-4 group-hover:text-white transition-colors duration-300`}>
+                        <h4 className={`${styles.companyName} ${styles[`${exp.color}Company`]}`}>
                           {exp.company}
                         </h4>
                       </div>
                       
                       {/* Date and info badges */}
-                      <div className="flex flex-col gap-2 lg:items-end">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-gray-400" />
-                          <span className={`text-sm font-medium text-${exp.iconColor} bg-gradient-to-r ${exp.gradient} px-3 py-1 rounded-full border border-white/10 group-hover:border-${exp.hoverBorder} transition-all duration-300`}>
+                      <div className={styles.headerRight}>
+                        <div className={styles.dateRow}>
+                          <Calendar className={styles.calendarIcon} />
+                          <span className={`${styles.dateBadge} ${styles[`${exp.color}Badge`]}`}>
                             {exp.dates}
                           </span>
                         </div>
-                        <div className="flex gap-2 text-xs">
-                          <span className="text-gray-400 bg-white/5 px-2 py-1 rounded-full border border-white/10">
+                        <div className={styles.infoBadges}>
+                          <span className={styles.infoBadge}>
                             {exp.duration}
                           </span>
-                          <span className="text-gray-400 bg-white/5 px-2 py-1 rounded-full border border-white/10">
+                          <span className={styles.infoBadge}>
                             {exp.type}
                           </span>
-                          <span className="text-gray-400 bg-white/5 px-2 py-1 rounded-full border border-white/10">
+                          <span className={styles.infoBadge}>
                             {exp.location}
                           </span>
                         </div>
@@ -152,16 +135,16 @@ export const Experience = () => {
                     </div>
 
                     {/* Key Achievements */}
-                    <div className="mb-6">
-                      <h5 className={`text-sm font-semibold text-${exp.iconColor} mb-4 flex items-center gap-2`}>
-                        <TrendingUp className="w-4 h-4" />
+                    <div className={styles.achievementsSection}>
+                      <h5 className={`${styles.sectionTitle} ${styles[`${exp.color}SectionTitle`]}`}>
+                        <TrendingUp className={styles.sectionIcon} />
                         Key Achievements
                       </h5>
-                      <div className="grid gap-3">
+                      <div className={styles.achievementsList}>
                         {exp.achievements.map((achievement, achievementIndex) => (
-                          <div key={achievementIndex} className="flex items-start gap-3 group/achievement">
-                            <div className={`w-2 h-2 bg-${exp.iconColor} rounded-full mt-2 flex-shrink-0 group-hover/achievement:scale-125 transition-transform duration-300`}></div>
-                            <span className="text-gray-300 leading-relaxed group-hover/achievement:text-gray-200 transition-colors duration-300">
+                          <div key={achievementIndex} className={styles.achievementItem}>
+                            <div className={`${styles.achievementBullet} ${styles[`${exp.color}Bullet`]}`}></div>
+                            <span className={styles.achievementText}>
                               {achievement}
                             </span>
                           </div>
@@ -170,16 +153,16 @@ export const Experience = () => {
                     </div>
 
                     {/* Technologies */}
-                    <div className="mb-4">
-                      <h5 className={`text-sm font-semibold text-${exp.iconColor} mb-3 flex items-center gap-2`}>
-                        <Award className="w-4 h-4" />
+                    <div className={styles.technologiesSection}>
+                      <h5 className={`${styles.sectionTitle} ${styles[`${exp.color}SectionTitle`]}`}>
+                        <Award className={styles.sectionIcon} />
                         Technologies Used
                       </h5>
-                      <div className="flex flex-wrap gap-2">
+                      <div className={styles.techList}>
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className={`text-xs font-medium text-gray-300 bg-gradient-to-r from-white/5 to-white/10 px-3 py-1 rounded-full border border-white/10 hover:border-${exp.iconColor}/30 transition-all duration-300 hover:shadow-sm hover:shadow-${exp.shadow}`}
+                            className={`${styles.techBadge} ${styles[`${exp.color}Tech`]}`}
                           >
                             {tech}
                           </span>
@@ -189,8 +172,10 @@ export const Experience = () => {
                   </div>
 
                   {/* Decorative elements */}
-                  <div className={`absolute top-4 right-4 w-3 h-3 bg-${exp.iconColor} rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
-                  <div className={`absolute bottom-4 right-4 w-2 h-2 bg-${exp.iconColor} rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-700`}></div>
+                  <div className={styles.decorativeElements}>
+                    <div className={`${styles.decorativeDot1} ${styles[`${exp.color}Decor`]}`}></div>
+                    <div className={`${styles.decorativeDot2} ${styles[`${exp.color}Decor`]}`}></div>
+                  </div>
                 </div>
               </div>
             ))}

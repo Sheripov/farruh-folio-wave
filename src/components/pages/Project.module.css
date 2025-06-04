@@ -4,6 +4,8 @@
   background: linear-gradient(135deg, #0f172a 0%, rgba(17, 24, 39, 0.5) 50%, #0f172a 100%);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 /* Container */
@@ -114,7 +116,7 @@
   position: absolute;
   inset: 0;
   opacity: 0.3;
-  transition: opacity 2.3s ease;
+  transition: opacity 0.3s ease;
   border-radius: 1rem;
 }
 
