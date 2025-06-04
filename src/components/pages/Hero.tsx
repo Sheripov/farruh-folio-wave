@@ -60,7 +60,6 @@ export const Hero = () => {
             <div className={styles.badge}>
               <span 
                 className={styles.badgeSpan}
-                data-testid="senior-badge"
               >
                 Senior Software Engineer
               </span>

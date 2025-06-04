@@ -109,7 +109,7 @@ export const Navigation = () => {
               <Code className="h-5 w-5 text-blue-300" />
             </div>
             <span className={styles.logoText}>
-              Farruh Sheripov
+              FusionCode
             </span>
           </div>
 

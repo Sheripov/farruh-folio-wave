@@ -108,101 +108,101 @@
 .badgeSpan::before,
 .badgeSpan::after {
   /* Reset all Tailwind CSS variables */
-  --tw-border-spacing-x: initial !important;
-  --tw-border-spacing-y: initial !important;
-  --tw-translate-x: initial !important;
-  --tw-translate-y: initial !important;
-  --tw-rotate: initial !important;
-  --tw-skew-x: initial !important;
-  --tw-skew-y: initial !important;
-  --tw-scale-x: initial !important;
-  --tw-scale-y: initial !important;
-  --tw-ring-offset-width: initial !important;
-  --tw-ring-offset-color: initial !important;
-  --tw-ring-color: initial !important;
-  --tw-ring-offset-shadow: initial !important;
-  --tw-ring-shadow: initial !important;
-  --tw-shadow: initial !important;
-  --tw-shadow-colored: initial !important;
+  --tw-border-spacing-x: initial;
+  --tw-border-spacing-y: initial;
+  --tw-translate-x: initial;
+  --tw-translate-y: initial;
+  --tw-rotate: initial;
+  --tw-skew-x: initial;
+  --tw-skew-y: initial;
+  --tw-scale-x: initial;
+  --tw-scale-y: initial;
+  --tw-ring-offset-width: initial;
+  --tw-ring-offset-color: initial;
+  --tw-ring-color: initial;
+  --tw-ring-offset-shadow: initial;
+  --tw-ring-shadow: initial;
+  --tw-shadow: initial;
+  --tw-shadow-colored: initial;
   
   /* Reset all inherited properties */
-  all: unset !important;
+  all: unset;
 }
 
 .badgeSpan {
   /* Apply our custom styles */
-  display: inline-block !important;
-  font-family: inherit !important;
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  line-height: 1.25rem !important;
-  color: rgb(147, 197, 253) !important;
-  background-color: rgba(59, 130, 246, 0.08) !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 0.5rem !important;
-  border: 1px solid rgba(255 255 255, 0.1) !important;
-  transition: all 0.3s ease !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  box-shadow: none !important;
-  position: relative !important;
-  z-index: 1 !important;
-  box-sizing: border-box !important;
-  text-decoration: none !important;
-  outline: none !important;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: rgb(147, 197, 253);
+  background-color: rgba(59, 130, 246, 0.08);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255 255 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
 }
 
 .badgeSpan:hover {
-  border: 1px solid rgba(59, 130, 246, 0.2) !important;
-  background-color: rgba(59, 130, 246, 0.12) !important;
-  box-shadow: none !important;
-  transform: none !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background-color: rgba(59, 130, 246, 0.12);
+  box-shadow: none;
+  transform: none;
 }
 
 /* Maximum specificity to override everything */
 .hero .container .fadeIn .header .badge .badgeSpan {
-  border: 1px solid rgba(255 255 255, 0.1) !important;
-  border-top: 1px solid rgba(255 255 255, 0.1) !important;
-  border-right: 1px solid rgba(255 255 255, 0.1) !important;
-  border-bottom: 1px solid rgba(255 255 255, 0.1) !important;
-  border-left: 1px solid rgba(255 255 255, 0.1) !important;
-  border-style: solid !important;
-  border-width: 1px !important;
-  border-color: rgba(255 255 255, 0.1) !important;
-  background: rgba(59, 130, 246, 0.08) !important;
-  background-color: rgba(59, 130, 246, 0.08) !important;
-  background-image: none !important;
+  border: 1px solid rgba(255 255 255, 0.1);
+  border-top: 1px solid rgba(255 255 255, 0.1);
+  border-right: 1px solid rgba(255 255 255, 0.1);
+  border-bottom: 1px solid rgba(255 255 255, 0.1);
+  border-left: 1px solid rgba(255 255 255, 0.1);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255 255 255, 0.1);
+  background: rgba(59, 130, 246, 0.08);
+  background-color: rgba(59, 130, 246, 0.08);
+  background-image: none;
 }
 
 .hero .container .fadeIn .header .badge .badgeSpan:hover {
-  border: 1px solid rgba(59, 130, 246, 0.2) !important;
-  border-top: 1px solid rgba(59, 130, 246, 0.2) !important;
-  border-right: 1px solid rgba(59, 130, 246, 0.2) !important;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
-  border-left: 1px solid rgba(59, 130, 246, 0.2) !important;
-  border-style: solid !important;
-  border-width: 1px !important;
-  border-color: rgba(59, 130, 246, 0.2) !important;
-  background: rgba(59, 130, 246, 0.12) !important;
-  background-color: rgba(59, 130, 246, 0.12) !important;
-  background-image: none !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  border-right: 1px solid rgba(59, 130, 246, 0.2);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  border-left: 1px solid rgba(59, 130, 246, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(59, 130, 246, 0.2);
+  background: rgba(59, 130, 246, 0.12);
+  background-color: rgba(59, 130, 246, 0.12);
+  background-image: none;
 }
 
 /* Fallback with even higher specificity */
 .hero .badge .badgeSpan {
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  background-color: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(59, 130, 246, 0.08);
 }
 
 .hero .badge .badgeSpan:hover {
-  border: 1px solid rgba(59, 130, 246, 0.2) !important;
-  background-color: rgba(59, 130, 246, 0.12) !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background-color: rgba(59, 130, 246, 0.12);
 }
 
 .mainTitle {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(to right, white, rgb(209, 213, 219));
+  background: linear-gradient(to right, rgb(96, 165, 250), rgb(52, 211, 153), rgb(168, 85, 247), rgb(251, 146, 60));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -298,7 +298,6 @@
 
 .secondaryButton:hover {
   background-color: rgb(96, 15, 82, 0.2);
-  color: white;
   transform: scale(1.05);
 }
 

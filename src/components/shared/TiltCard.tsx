@@ -40,11 +40,11 @@ const tiltCardStyles: Record<string, CSSProperties> = {
 export const TiltCard: React.FC<TiltCardProps> = ({
   children,
   className = '',
-  intensity = 1,
+  intensity = 0.8,
   glareEffect = true,
-  maxTilt = 15,
-  scale = 0.02,
-  perspective = 1000
+  maxTilt = 10,
+  scale = 0.00,
+  perspective = 10000
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRectsCache = useRef<Map<HTMLElement, DOMRect>>(new Map());
@@ -118,7 +118,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
             const distance = Math.sqrt(centerX * centerX + centerY * centerY);
             const glareIntensity = Math.max(0, 1 - distance * 2) * 0.4;
             
-            glareElement.style.background = `radial-gradient(ellipse 800px 400px at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.08 * glareIntensity).toFixed(3)}) 0%, rgba(255, 255, 255, ${(0.04 * glareIntensity).toFixed(3)}) 30%, transparent 70%)`;
+            glareElement.style.background = `radial-gradient(ellipse 800px 400px at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.08 * glareIntensity).toFixed(3)}) 110%, rgba(255, 255, 255, ${(0.04 * glareIntensity).toFixed(3)}) 30%, transparent 70%)`;
             glareElement.style.opacity = '1';
             glareElement.style.willChange = 'opacity, background';
           }

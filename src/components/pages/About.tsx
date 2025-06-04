@@ -149,12 +149,7 @@ export const About = () => {
             </div>
 
             {/* Right Column - Contact Info */}
-            <div className={styles.rightColumn}>
-              <h3 className={styles.contactTitle}>
-                <Mail className={styles.contactTitleIcon} />
-                Get In Touch
-              </h3>
-              
+            <div className={styles.rightColumn}>              
               {personalInfo.map((info, index) => (
                 <div 
                   key={index}
