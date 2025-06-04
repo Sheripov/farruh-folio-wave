@@ -11,6 +11,7 @@ import { Navigation } from '@/components/layout/Navigation';
 import { ParallaxBackground, ParallaxConfig } from '@/components/effects/ParallaxBackground';
 import { createParallaxConfig, intense } from '@/components/effects/ParallaxConfig';
 import { AnimatedParticles } from '@/components/effects/AnimatedParticles';
+import { FloatingWords } from '@/components/effects/FloatingWords';
 
 const Index = () => {
   const parallaxConfig = createParallaxConfig('intense', {
@@ -25,6 +26,22 @@ const Index = () => {
     <div>
       {/* Navigation outside of scroll wrapper to be truly fixed */}
       <Navigation />
+
+      {/* Animated floating words */}
+      <FloatingWords 
+        count={20}
+        speed={3}
+        rotationSpeed={20}
+        opacity={0.2}
+        fontSize="0.8rem"
+        sideOnlyPercentage={0.85}
+        centerAreaStart={25}
+        centerAreaEnd={75}
+        leftSideEnd={20}
+        rightSideStart={80}
+        enableRotation={true}
+        enableBounce={true}
+      />
       
       <ParallaxBackground config={parallaxConfig} adjustedParticleCount={typeof window !== 'undefined' && window.innerWidth < 768
     ? Math.floor(parallaxConfig.particleCount / 2)

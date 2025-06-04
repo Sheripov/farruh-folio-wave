@@ -1,0 +1,146 @@
+/* Animated floating words */
+.floatingWords {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 40;
+}
+
+.floatingWord {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.6;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform;
+  transition: none;
+}
+
+.floatingWord.gradient1 {
+  background: linear-gradient(45deg, rgb(96, 165, 250), rgb(52, 211, 153));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floatingWord.gradient2 {
+  background: linear-gradient(45deg, rgb(168, 85, 247), rgb(251, 146, 60));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floatingWord.gradient3 {
+  background: linear-gradient(45deg, rgb(52, 211, 153), rgb(168, 85, 247));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floatingWord.gradient4 {
+  background: linear-gradient(45deg, rgb(251, 146, 60), rgb(96, 165, 250));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floatingWord.gradient5 {
+  background: linear-gradient(45deg, rgb(236, 72, 153), rgb(52, 211, 153));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floatingWord.gradient6 {
+  background: linear-gradient(45deg, rgb(59, 130, 246), rgb(236, 72, 153));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Legacy animation rules (currently unused but kept for potential future use) */
+.floatingWord:nth-child(odd) {
+  animation-direction: reverse;
+}
+
+.floatingWord:nth-child(3n) {
+  animation-duration: 18s;
+}
+
+.floatingWord:nth-child(4n) {
+  animation-duration: 12s;
+}
+
+.floatingWord:nth-child(5n) {
+  animation-duration: 20s;
+}
+
+/* Different animation delays for staggered effect (legacy) */
+.floatingWord:nth-child(1) { animation-delay: 0s; }
+.floatingWord:nth-child(2) { animation-delay: 2s; }
+.floatingWord:nth-child(3) { animation-delay: 4s; }
+.floatingWord:nth-child(4) { animation-delay: 6s; }
+.floatingWord:nth-child(5) { animation-delay: 8s; }
+.floatingWord:nth-child(6) { animation-delay: 10s; }
+.floatingWord:nth-child(7) { animation-delay: 12s; }
+.floatingWord:nth-child(8) { animation-delay: 14s; }
+.floatingWord:nth-child(9) { animation-delay: 1s; }
+.floatingWord:nth-child(10) { animation-delay: 3s; }
+.floatingWord:nth-child(11) { animation-delay: 5s; }
+.floatingWord:nth-child(12) { animation-delay: 7s; }
+.floatingWord:nth-child(13) { animation-delay: 9s; }
+.floatingWord:nth-child(14) { animation-delay: 11s; }
+.floatingWord:nth-child(15) { animation-delay: 13s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floatingWord {
+    font-size: 0.75rem;
+  }
+  
+  .floatingWords {
+    /* On tablets, create more space in center */
+    mask: linear-gradient(to right, 
+      rgba(255,255,255,1) 0%, 
+      rgba(255,255,255,1) 20%, 
+      rgba(255,255,255,0.3) 35%, 
+      rgba(255,255,255,0.3) 65%, 
+      rgba(255,255,255,1) 80%, 
+      rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(to right, 
+      rgba(255,255,255,1) 0%, 
+      rgba(255,255,255,1) 20%, 
+      rgba(255,255,255,0.3) 35%, 
+      rgba(255,255,255,0.3) 65%, 
+      rgba(255,255,255,1) 80%, 
+      rgba(255,255,255,1) 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingWord {
+    font-size: 0.625rem;
+  }
+  
+  .floatingWords {
+    /* On mobile, hide center completely */
+    mask: linear-gradient(to right, 
+      rgba(255,255,255,1) 0%, 
+      rgba(255,255,255,1) 15%, 
+      rgba(255,255,255,0) 30%, 
+      rgba(255,255,255,0) 70%, 
+      rgba(255,255,255,1) 85%, 
+      rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(to right, 
+      rgba(255,255,255,1) 0%, 
+      rgba(255,255,255,1) 15%, 
+      rgba(255,255,255,0) 30%, 
+      rgba(255,255,255,0) 70%, 
+      rgba(255,255,255,1) 85%, 
+      rgba(255,255,255,1) 100%);
+  }
+} 
