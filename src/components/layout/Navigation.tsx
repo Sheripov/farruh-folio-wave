@@ -72,12 +72,14 @@ export const Navigation = () => {
         behavior: 'smooth'
       });
     }
-    // Animate out before closing
-    setIsAnimatingOut(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsAnimatingOut(false);
-    }, 250);
+    // Only animate out and close if mobile menu is actually open
+    if (isOpen) {
+      setIsAnimatingOut(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setIsAnimatingOut(false);
+      }, 250);
+    }
   };
 
   const toggleMenu = () => {
