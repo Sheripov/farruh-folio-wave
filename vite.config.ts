@@ -4,8 +4,8 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Set base path for GitHub Pages
-  base: process.env.NODE_ENV === 'production' ? '/farruh-folio-wave/' : '/',
+  // Set base path to root for custom domain or username.github.io repo
+  base: '/',
   server: {
     host: "::",
     port: 8080,
