@@ -1,78 +1,85 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Code } from 'lucide-react';
 import styles from './Navigation.module.css';
 
-// Throttle function for performance
-const throttle = (func: Function, limit: number) => {
-  let inThrottle: boolean;
-  return function(this: any, ...args: any[]) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  };
-};
+/* --- menu items list --- */
+const navItems = [
+  { id: 'hero',        label: 'Home' },
+  { id: 'about',       label: 'About' },
+  { id: 'experience',  label: 'Experience' },
+  { id: 'projects',    label: 'Projects' },
+  { id: 'skills',      label: 'Skills' },
+  { id: 'strengths',   label: 'Strengths' },
+  { id: 'education',   label: 'Education' },
+  { id: 'contact',     label: 'Contact' },
+];
 
 export const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  /* --- state --- */
+  const [isOpen, setIsOpen]               = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled]       = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
-  const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'strengths', label: 'Strengths' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
-  const handleScroll = useCallback(
-    throttle(() => {
-      // Find the scroll container
-      const scrollContainer = window;
-      if (!scrollContainer) return;
-
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPos = window.scrollY + 100;
-      
-      // Update scroll state for background effect
-      setIsScrolled(window.scrollY > 50);
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPos) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
-      }
-    }, 100),
-    [navItems]
-  );
-
+  /* -------------------------------------------------------------------- */
+  /*    1. synchronize actual navbar height with CSS variable              */
+  /* -------------------------------------------------------------------- */
   useEffect(() => {
-    // Listen to scroll events on window
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    const syncHeight = () => {
+      if (navRef.current) {
+        const h = navRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--nav-height', `${h}px`);
+      }
+    };
+    syncHeight();
+    window.addEventListener('resize', syncHeight);
+    return () => window.removeEventListener('resize', syncHeight);
+  }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Calculate the absolute position of the element
-      const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const target = Math.min(elementTop - 80, maxScroll);
-      window.scrollTo({
-        top: target,
-        behavior: 'smooth'
-      });
-    }
-    // Only animate out and close if mobile menu is actually open
+  /* -------------------------------------------------------------------- */
+  /*    2. change navbar background on scroll                              */
+  /* -------------------------------------------------------------------- */
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  /* -------------------------------------------------------------------- */
+  /*    3. determine active section using IntersectionObserver             */
+  /* -------------------------------------------------------------------- */
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+
+    const navHeight = navRef.current?.offsetHeight ?? 0;
+    const observer  = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection((entry.target as HTMLElement).id);
+          }
+        });
+      },
+      {
+        rootMargin: `-${navHeight}px 0px 0px 0px`, // accounting for header height
+        threshold : 0.6,                           // 60% of block visible → active
+      }
+    );
+
+    navItems.forEach(item => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  /* -------------------------------------------------------------------- */
+  /*    4. helper functions                                                */
+  /* -------------------------------------------------------------------- */
+  /** Closes mobile menu with a short animation */
+  const closeMobileMenu = () => {
     if (isOpen) {
       setIsAnimatingOut(true);
       setTimeout(() => {
@@ -82,6 +89,21 @@ export const Navigation = () => {
     }
   };
 
+  /** Smoothly scrolls to section with adjustment for actual navbar height */
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const navH   = navRef.current?.offsetHeight ?? 0;
+      const target = Math.min(
+        el.getBoundingClientRect().top + window.pageYOffset - navH,
+        document.body.scrollHeight - window.innerHeight
+      );
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
+    closeMobileMenu();
+  };
+
+  /** Opens/closes burger menu */
   const toggleMenu = () => {
     if (isOpen) {
       setIsAnimatingOut(true);
@@ -94,60 +116,62 @@ export const Navigation = () => {
     }
   };
 
+  /* -------------------------------------------------------------------- */
+  /*    5. markup                                                         */
+  /* -------------------------------------------------------------------- */
   return (
-    <nav 
+    <nav
+      ref={navRef}
       className={`${styles.nav} ${isScrolled ? styles.scrolled : styles.notScrolled} transition-all duration-300`}
     >
       <div className={styles.container}>
         <div className={styles.inner}>
           {/* Logo */}
-          <div 
-            className={styles.logoButton}
-            onClick={() => scrollToSection('hero')}
-          >
+          <div className={styles.logoButton} onClick={() => scrollToSection('hero')}>
             <div className={styles.logoIconWrapper}>
               <Code className="h-5 w-5 text-blue-300" />
             </div>
-            <span className={styles.logoText}>
-              FusionCode
-            </span>
+            <span className={styles.logoText}>FusionCode</span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop menu */}
           <div className={styles.desktopNav}>
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`${styles.navButton} ${activeSection === item.id ? styles.navButtonActive : styles.navButtonInactive}`}
+                className={`${styles.navButton} ${
+                  activeSection === item.id ? styles.navButtonActive : styles.navButtonInactive
+                }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Burger menu button */}
           <div className={styles.menuToggleWrapper}>
-            <button
-              className={styles.menuToggle}
-              onClick={toggleMenu}
-            >
+            <button className={styles.menuToggle} onClick={toggleMenu}>
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {(isOpen || isAnimatingOut) && (
           <div
-            className={`${styles.mobileNav} ${isAnimatingOut ? styles.mobileNavLeave : styles.mobileNavEnter}`}
+            className={`${styles.mobileNav} ${
+              isAnimatingOut ? styles.mobileNavLeave : styles.mobileNavEnter
+            }`}
           >
             <div className={styles.mobileNavContent}>
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`${styles.mobileNavItem} ${activeSection === item.id ? styles.navButtonActive : styles.navButtonInactive}`}
+                  className={`${styles.mobileNavItem} ${
+                    activeSection === item.id ? styles.navButtonActive : styles.navButtonInactive
+                  }`}
                 >
                   {item.label}
                 </button>
