@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useCallback, ReactNode, CSSProperties } from 'react';
 
-interface TiltCardProps {
+export interface TiltCardProps {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   intensity?: number;
   glareEffect?: boolean;
   maxTilt?: number;
@@ -40,6 +41,7 @@ const tiltCardStyles: Record<string, CSSProperties> = {
 export const TiltCard: React.FC<TiltCardProps> = ({
   children,
   className = '',
+  style = {},
   intensity = 0.8,
   glareEffect = true,
   maxTilt = 10,
@@ -274,6 +276,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
       className={`tilt-card ${className}`}
       style={{
         ...tiltCardStyles.card,
+        ...style,
         transform: 'none',
         willChange: 'auto',
         backfaceVisibility: 'visible' as const
