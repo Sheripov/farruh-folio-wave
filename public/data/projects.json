@@ -1,0 +1,70 @@
+[
+  {
+    "title": "PII Redaction & NER Pipeline",
+    "description": "Production-grade pipeline for Named Entity Recognition and PII redaction using BERT, Hugging Face Transformers, and Microsoft Presidio.",
+    "technologies": ["Python", "BERT", "Transformers", "Presidio", "Django", "FastAPI"],
+    "category": "AI/ML & NLP",
+    "year": "2024",
+    "team": "3 developers",
+    "duration": "6 months",
+    "highlights": [
+      "Fine-tuned transformer models for NER",
+      "Integrated Presidio for document anonymization",
+      "Deployed scalable API with FastAPI/Django",
+      "Achieved 95%+ accuracy in PII detection"
+    ],
+    "github": "https://github.com/farruh-sheripov/pii-redaction-pipeline",
+    "demo": "https://pii-demo.fusioncode.org"
+  },
+  {
+    "title": "RAG Search Platform",
+    "description": "Retrieval-Augmented Generation (RAG) platform with Haystack, LangChain, and LlamaIndex, supporting vector search with FAISS and Qdrant.",
+    "technologies": ["Python", "Haystack", "LangChain", "LlamaIndex", "FAISS", "Qdrant", "ChromaDB", "Docker"],
+    "category": "AI/ML & Vector Search",
+    "year": "2023",
+    "team": "4 developers",
+    "duration": "8 months",
+    "highlights": [
+      "RAG pipelines for enterprise search",
+      "Vector DB integration (FAISS, Qdrant)",
+      "LLM evaluation with RAGAS",
+      "Cloud-native deployment (GCP, Docker)"
+    ],
+    "github": "https://github.com/farruh-sheripov/rag-search-platform",
+    "demo": "https://rag-demo.fusioncode.org"
+  },
+  {
+    "title": "Blockchain Crowdfunding System",
+    "description": "Blockchain-based payment and crowdfunding platform with smart contracts, crypto payments, and real-time event tracking.",
+    "technologies": ["Python", "Django", "Blockchain", "OchainLabs", "JWT", "PostgreSQL"],
+    "category": "Backend & Blockchain",
+    "year": "2023",
+    "team": "5 developers",
+    "duration": "10 months",
+    "highlights": [
+      "Smart contract integration",
+      "On-chain event tracking",
+      "Secure authentication (JWT, 2FA)",
+      "Optimized DB queries (60% faster)"
+    ],
+    "github": "https://github.com/farruh-sheripov/blockchain-crowdfunding",
+    "demo": "https://blockchain-demo.fusioncode.org"
+  },
+  {
+    "title": "Cloud Data Orchestration",
+    "description": "End-to-end data orchestration and analytics platform using Google Cloud Pub/Sub, Django, and Kubernetes for real-time and scheduled data pipelines.",
+    "technologies": ["Python", "Django", "GCP", "Pub/Sub", "Kubernetes", "CI/CD"],
+    "category": "Cloud & Data Engineering",
+    "year": "2022",
+    "team": "4 developers",
+    "duration": "7 months",
+    "highlights": [
+      "Real-time/scheduled data pipelines",
+      "Integration with Jira, GitHub, Slack",
+      "Event-sourced data models",
+      "Cloud-native deployment (GCP, K8s)"
+    ],
+    "github": "https://github.com/farruh-sheripov/cloud-orchestration",
+    "demo": "https://cloud-demo.fusioncode.org"
+  }
+] 

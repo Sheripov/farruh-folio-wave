@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "GraduationCap",
+    "degree": "Bachelors, Information Technology (IT) Software Development",
+    "university": "Belarusian National Technical University, Belarus",
+    "universityIcon": "BookOpen",
+    "years": "2012 - 2017",
+    "duration": "5 Years",
+    "description": "Solid foundation in theoretical and applied computer science. Curriculum combined core programming, software engineering, databases, and security.",
+    "subjects": [
+      "Python, C++, C#",
+      "Relational Databases & SQL",
+      "Cybersecurity & Encryption",
+      "Object-Oriented Programming (OOP)",
+      "Team Projects & Version Control"
+    ]
+  }
+] 

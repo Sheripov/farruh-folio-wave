@@ -99,10 +99,15 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.5s;
   position: relative;
+  /* Dynamic vars */
+  --card-gradient: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+  --text-color: #93c5fd;
+  --border-hover: rgba(96, 165, 250, 0.3);
+  --shadow-color: rgba(96, 165, 250, 0.2);
 }
 
 .card:hover {
-  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 25px 50px -12px var(--shadow-color);
 }
 
 .cardContent {
@@ -126,7 +131,7 @@
 
 .iconContainer {
   padding: 1.5rem;
-  background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
+  background: var(--card-gradient);
   border-radius: 1rem;
   transition: all 0.3s;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -134,13 +139,13 @@
 
 .card:hover .iconContainer {
   transform: scale(1.05);
-  border-color: rgba(59, 130, 246, 0.2);
+  border-color: var(--border-hover);
 }
 
 .icon {
   height: 3rem;
   width: 3rem;
-  color: rgb(147, 197, 253);
+  color: var(--text-color);
 }
 
 /* Content Section */
@@ -173,7 +178,7 @@
 .university {
   font-size: 1.25rem;
   font-weight: 600;
-  color: rgb(147, 197, 253);
+  color: var(--text-color);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -183,6 +188,7 @@
 .universityIcon {
   height: 1.25rem;
   width: 1.25rem;
+  color: var(--text-color);
 }
 
 /* Date and Duration */
@@ -200,6 +206,23 @@
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s;
+  background: var(--card-gradient);
+}
+
+.badge:hover {
+  border-color: var(--border-hover);
+}
+
+.badgeIcon {
+  height: 1rem;
+  width: 1rem;
+  color: var(--text-color);
+}
+
+.badgeText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
 }
 
 .dateBadge {
@@ -216,24 +239,6 @@
 
 .durationBadge:hover {
   border-color: rgba(99, 102, 241, 0.2);
-}
-
-.badgeIcon {
-  height: 1rem;
-  width: 1rem;
-}
-
-.dateIcon {
-  color: rgb(147, 197, 253);
-}
-
-.durationIcon {
-  color: rgb(165, 180, 252);
-}
-
-.badgeText {
-  font-size: 0.875rem;
-  font-weight: 500;
 }
 
 .dateText {
@@ -311,7 +316,7 @@
 .subjectDot {
   width: 0.5rem;
   height: 0.5rem;
-  background-color: rgb(96, 165, 250);
+  background-color: var(--text-color);
   border-radius: 50%;
 }
 
@@ -327,7 +332,7 @@
   right: 1rem;
   width: 0.75rem;
   height: 0.75rem;
-  background-color: rgb(96, 165, 250);
+  background-color: var(--text-color);
   border-radius: 50%;
   opacity: 0.6;
   transition: opacity 0.3s;
@@ -343,7 +348,7 @@
   left: 1rem;
   width: 0.5rem;
   height: 0.5rem;
-  background-color: rgb(129, 140, 248);
+  background-color: var(--text-color);
   border-radius: 50%;
   opacity: 0.4;
   transition: opacity 0.5s;
@@ -365,7 +370,7 @@
   position: absolute;
   width: 0.25rem;
   height: 0.25rem;
-  background-color: rgb(147, 197, 253);
+  background-color: var(--text-color);
   border-radius: 50%;
   opacity: 0.3;
   animation: float 4s ease-in-out infinite;

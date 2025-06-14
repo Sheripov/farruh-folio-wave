@@ -1,0 +1,14 @@
+{
+  "badge": "AI/ML Software Engineer",
+  "name": "Farruh Sheripov",
+  "subtitle": "AI/ML Engineer & Backend Architect",
+  "description": "Results-driven AI/ML Engineer with a strong backend foundation and deep specialization in NLP and LLMs. Expert in RAG pipelines, vector search, and scalable cloud-native deployments. Proven record of delivering production-grade AI and backend systems for business-critical applications.",
+  "primaryButtonText": "Download Resume",
+  "primaryButtonLink": "/media/farruh-sheripov-cv.pdf",
+  "secondaryButtonText": "Get In Touch",
+  "stats": [
+    { "number": "7+", "label": "Years in AI/Backend" },
+    { "number": "10+", "label": "AI/ML Projects" },
+    { "number": "3", "label": "Languages" }
+  ]
+} 

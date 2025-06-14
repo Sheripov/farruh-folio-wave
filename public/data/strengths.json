@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "Clock",
+    "title": "Time Management",
+    "description": "Efficient project planning and deadline adherence with proven track record of on-time deliveries.",
+    "color": "emerald"
+  },
+  {
+    "icon": "Zap",
+    "title": "Adaptability",
+    "description": "Thrives in dynamic environments, quickly adopts new technologies and methodologies.",
+    "color": "amber"
+  },
+  {
+    "icon": "Target",
+    "title": "Accountability",
+    "description": "Takes ownership of projects from conception to deployment, ensuring quality and reliability.",
+    "color": "rose"
+  },
+  {
+    "icon": "Lightbulb",
+    "title": "Problem Solving",
+    "description": "Analytical approach to complex challenges with creative solutions that drive business value.",
+    "color": "violet"
+  },
+  {
+    "icon": "Users",
+    "title": "Leadership",
+    "description": "Hands-on technical leadership and cross-functional team collaboration.",
+    "color": "blue"
+  },
+  {
+    "icon": "Star",
+    "title": "Technical Excellence",
+    "description": "Delivers robust, scalable, and business-aligned AI/ML and backend solutions.",
+    "color": "purple"
+  }
+] 

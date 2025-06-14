@@ -1,76 +1,152 @@
-import React from 'react';
-import { MapPin, Mail, ExternalLink, Code, Heart, Coffee, Zap, Star, User, Globe, Calendar } from 'lucide-react';
+import React, { CSSProperties, useState, useEffect } from 'react';
+import {
+  MapPin,
+  Mail,
+  ExternalLink,
+  Code,
+  Heart,
+  Coffee,
+  Zap,
+  Star,
+  User,
+  Globe,
+  Calendar,
+  type LucideIcon,
+} from 'lucide-react';
 import styles from './About.module.css';
 
-export const About = () => {
-  const personalInfo = [
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "Cracow, Poland",
-      description: "Based in beautiful Cracow",
-      color: "blue",
-      gradient: "from-blue-500/20 to-cyan-500/20",
-      borderColor: "blue-500/20",
-      hoverBorder: "blue-400/40",
-      iconColor: "blue-300",
-      shadow: "blue-500/20"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      value: "farruh.sheripov@fusioncode.org",
-      description: "Let's connect and collaborate",
-      link: "mailto:farruh.sheripov@fusioncode.org",
-      color: "emerald",
-      gradient: "from-emerald-500/20 to-teal-500/20",
-      borderColor: "emerald-500/20",
-      hoverBorder: "emerald-400/40",
-      iconColor: "emerald-300",
-      shadow: "emerald-500/20"
-    },
-    {
-      icon: ExternalLink,
-      title: "LinkedIn",
-      value: "linkedin.com/in/farruh-sheripov",
-      description: "Professional networking",
-      link: "https://linkedin.com/in/farruh-sheripov",
-      color: "purple",
-      gradient: "from-purple-500/20 to-violet-500/20",
-      borderColor: "purple-500/20",
-      hoverBorder: "purple-400/40",
-      iconColor: "purple-300",
-      shadow: "purple-500/20"
-    },
-    {
-      icon: Globe,
-      title: "Languages",
-      value: "English, Russian, Uzbek",
-      description: "Multilingual communication",
-      color: "orange",
-      gradient: "from-orange-500/20 to-amber-500/20",
-      borderColor: "orange-500/20",
-      hoverBorder: "orange-400/40",
-      iconColor: "orange-300",
-      shadow: "orange-500/20"
-    }
-  ];
+// Color palette for dynamic color generation
+const colorPalettes = [
+  { primary: '#3b82f6', secondary: '#06b6d4', text: '#93c5fd' }, // blue
+  { primary: '#10b981', secondary: '#14b8a6', text: '#6ee7b7' }, // emerald
+  { primary: '#8b5cf6', secondary: '#7c3aed', text: '#c4b5fd' }, // purple
+  { primary: '#f97316', secondary: '#f59e0b', text: '#fdba74' }, // orange
+  { primary: '#ec4899', secondary: '#db2777', text: '#f9a8d4' }, // pink
+  { primary: '#ef4444', secondary: '#dc2626', text: '#fca5a5' }, // red
+  { primary: '#f59e0b', secondary: '#d97706', text: '#fcd34d' }, // amber
+  { primary: '#84cc16', secondary: '#65a30d', text: '#bef264' }, // lime
+  { primary: '#14b8a6', secondary: '#0d9488', text: '#5eead4' }, // teal
+  { primary: '#6366f1', secondary: '#4f46e5', text: '#a5b4fc' }  // indigo
+];
 
-  const interests = [
-    { icon: Code, text: "Clean Code", color: "blue" },
-    { icon: Zap, text: "Performance", color: "emerald" },
-    { icon: Heart, text: "Open Source", color: "purple" },
-    { icon: Coffee, text: "Problem Solving", color: "orange" }
-  ];
+// Map of icon names (strings coming from JSON) to Lucide icon components
+const iconsMap: Record<string, LucideIcon> = {
+  MapPin,
+  Mail,
+  ExternalLink,
+  Code,
+  Heart,
+  Coffee,
+  Zap,
+  Star,
+  User,
+  Globe,
+  Calendar,
+};
+
+// ------------ Types for JSON -----------
+interface PersonalInfoJson {
+  icon: string;
+  title: string;
+  value: string;
+  description: string;
+  link?: string;
+}
+
+interface InterestJson {
+  icon: string;
+  text: string;
+  color: string;
+}
+
+interface AboutJson {
+  personalInfo: PersonalInfoJson[];
+  interests: InterestJson[];
+}
+
+// ------------ Component state interfaces (with resolved icons) -----------
+interface PersonalInfo {
+  icon: LucideIcon;
+  title: string;
+  value: string;
+  description: string;
+  link?: string;
+  colorPalette?: {
+    primary: string;
+    secondary: string;
+    text: string;
+  };
+}
+
+interface InterestItem {
+  icon: LucideIcon;
+  text: string;
+  color: string;
+}
+
+// Extend CSS Properties to support CSS variables
+interface CustomCSSProperties extends CSSProperties {
+  '--card-gradient'?: string;
+  '--text-color'?: string;
+  '--border-hover'?: string;
+  '--shadow-color'?: string;
+  '--title-hover-color'?: string;
+}
+
+export const About = () => {
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfo[]>([]);
+  const [interests, setInterests] = useState<InterestItem[]>([]);
+
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      try {
+        const response = await fetch('/data/about.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch about data: ${response.status}`);
+        }
+        const data: AboutJson = await response.json();
+
+        // Map personal info
+        const mappedPersonalInfo: PersonalInfo[] = data.personalInfo.map((item, idx) => ({
+          icon: iconsMap[item.icon] || User,
+          title: item.title,
+          value: item.value,
+          description: item.description,
+          link: item.link,
+          colorPalette: colorPalettes[idx % colorPalettes.length],
+        }));
+
+        // Map interests
+        const mappedInterests: InterestItem[] = data.interests.map((item) => ({
+          icon: iconsMap[item.icon] || Star,
+          text: item.text,
+          color: item.color,
+        }));
+
+        setPersonalInfo(mappedPersonalInfo);
+        setInterests(mappedInterests);
+      } catch (err) {
+        console.error('Error loading about data:', err);
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
+  // If data hasn't loaded yet, render nothing (or a placeholder if desired)
+  if (!personalInfo.length) {
+    return null;
+  }
+
+  // Attach color palettes dynamically (they are already attached in mapping)
+  const infoWithColors = personalInfo;
 
   return (
-    <section id="about" className={styles.aboutSection}>      
+    <section id="about" className={styles.aboutSection}>
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
-          <h2 className={styles.title}>
-            About Me
-          </h2>
+          <h2 className={styles.title}>About Me</h2>
           <div className={styles.titleUnderline}></div>
         </div>
 
@@ -117,14 +193,11 @@ export const About = () => {
                     </h4>
                     <div className={styles.interestsList}>
                       {interests.map((interest, index) => (
-                        <div 
-                          key={index}
-                          className={styles.interestItem}
-                        >
-                          <interest.icon className={`${styles.interestIcon} ${styles[`interestIcon${interest.color.charAt(0).toUpperCase() + interest.color.slice(1)}`]}`} />
-                          <span className={styles.interestText}>
-                            {interest.text}
-                          </span>
+                        <div key={index} className={styles.interestItem}>
+                          <interest.icon
+                            className={`${styles.interestIcon} ${styles[`interestIcon${interest.color.charAt(0).toUpperCase() + interest.color.slice(1)}`]}`}
+                          />
+                          <span className={styles.interestText}>{interest.text}</span>
                         </div>
                       ))}
                     </div>
@@ -149,51 +222,53 @@ export const About = () => {
             </div>
 
             {/* Right Column - Contact Info */}
-            <div className={styles.rightColumn}>              
-              {personalInfo.map((info, index) => (
-                <div 
-                  key={index}
-                  className={styles.contactCard}
-                  style={{
-                    animationDelay: `${index * 0.1}s`
-                  }}
-                >
-                  {/* Background gradient overlay */}
-                  <div className={`${styles.contactCardBgOverlay} ${styles[`contactCardBg${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}></div>
-                  
-                  {/* Shimmer effect */}
-                  <div className={styles.contactCardShimmer}></div>
+            <div className={styles.rightColumn}>
+              {infoWithColors.map((info, index) => {
+                const { primary, secondary, text } = info.colorPalette || colorPalettes[0];
+                const cardStyle: CustomCSSProperties = {
+                  '--card-gradient': `linear-gradient(135deg, ${primary}33 0%, ${secondary}33 100%)`,
+                  '--text-color': text,
+                  '--border-hover': `${primary}66`,
+                  '--shadow-color': `${primary}33`,
+                  '--title-hover-color': text,
+                  animationDelay: `${index * 0.1}s`,
+                };
 
-                  <div className={styles.contactCardContent}>
-                    <div className={`${styles.contactIcon} ${styles[`contactIcon${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}>
-                      <info.icon className={`${styles.contactIconSvg} ${styles[`contactIconSvg${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`} />
+                return (
+                  <div key={index} className={styles.contactCard} style={cardStyle}>
+                    {/* Background gradient overlay */}
+                    <div className={styles.contactCardBgOverlay}></div>
+
+                    {/* Shimmer effect */}
+                    <div className={styles.contactCardShimmer}></div>
+
+                    <div className={styles.contactCardContent}>
+                      <div className={styles.contactIcon}>
+                        <info.icon className={styles.contactIconSvg} />
+                      </div>
+                      <div className={styles.contactInfo}>
+                        <h4 className={styles.contactInfoTitle}>{info.title}</h4>
+                        <div className={styles.contactInfoDescription}>{info.description}</div>
+                        {info.link ? (
+                          <a
+                            href={info.link}
+                            target={info.link.startsWith('http') ? '_blank' : undefined}
+                            rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className={`${styles.contactLink} ${styles.contactInfoValue}`}
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <div className={styles.contactInfoValue}>{info.value}</div>
+                        )}
+                      </div>
                     </div>
-                    <div className={styles.contactInfo}>
-                      <h4 className={`${styles.contactInfoTitle} ${styles[`contactInfoTitle${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}>
-                        {info.title}
-                      </h4>
-                      <div className={styles.contactInfoDescription}>{info.description}</div>
-                      {info.link ? (
-                        <a 
-                          href={info.link}
-                          target={info.link.startsWith('http') ? '_blank' : undefined}
-                          rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                          className={`${styles.contactLink} ${styles.contactInfoValue} ${styles[`contactInfoValue${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <div className={`${styles.contactInfoValue} ${styles[`contactInfoValue${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}>
-                          {info.value}
-                        </div>
-                      )}
-                    </div>
+
+                    {/* Decorative elements */}
+                    <div className={styles.contactCardDecorative}></div>
                   </div>
-
-                  {/* Decorative elements */}
-                  <div className={`${styles.contactCardDecorative} ${styles[`contactCardDecorative${info.color.charAt(0).toUpperCase() + info.color.slice(1)}`]}`}></div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

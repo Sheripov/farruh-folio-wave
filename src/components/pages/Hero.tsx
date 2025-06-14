@@ -1,11 +1,74 @@
-import React from 'react';
-import { Download, Mail, ArrowDown } from 'lucide-react';
+import React, { useEffect, useState, CSSProperties } from 'react';
+import { Download, Mail, ArrowDown, type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useParallax } from '@/hooks/useParallax';
 import styles from './Hero.module.css';
 
+// ---------------- Color palettes ----------------
+const colorPalettes = [
+  { primary: '#60a5fa', text: '#60a5fa' }, // blue
+  { primary: '#34d399', text: '#34d399' }, // emerald
+  { primary: '#c084fc', text: '#c084fc' }, // purple
+  { primary: '#f59e0b', text: '#f59e0b' }, // amber
+];
+
+// ---------------- JSON Types -------------------
+interface StatJson {
+  number: string;
+  label: string;
+}
+
+interface HeroJson {
+  badge: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  primaryButtonText: string;
+  primaryButtonLink: string;
+  secondaryButtonText: string;
+  stats: StatJson[];
+}
+
+interface StatItem extends StatJson {
+  colorPalette: {
+    primary: string;
+    text: string;
+  };
+}
+
+interface CustomCSSProperties extends CSSProperties {
+  '--text-color'?: string;
+}
+
 export const Hero = () => {
   const { getCombinedParallaxStyle } = useParallax();
+
+  const [heroData, setHeroData] = useState<HeroJson | null>(null);
+  const [stats, setStats] = useState<StatItem[]>([]);
+
+  useEffect(() => {
+    const fetchHero = async () => {
+      try {
+        const res = await fetch('/data/hero.json');
+        if (!res.ok) throw new Error(`Failed to fetch hero.json: ${res.status}`);
+        const data: HeroJson = await res.json();
+
+        const mappedStats: StatItem[] = data.stats.map((s, idx) => ({
+          ...s,
+          colorPalette: colorPalettes[idx % colorPalettes.length],
+        }));
+
+        setHeroData(data);
+        setStats(mappedStats);
+      } catch (e) {
+        console.error('Error loading hero.json', e);
+      }
+    };
+
+    fetchHero();
+  }, []);
+
+  if (!heroData) return null;
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -58,62 +121,50 @@ export const Hero = () => {
           {/* Clean header */}
           <div className={styles.header}>
             <div className={styles.badge}>
-              <span 
-                className={styles.badgeSpan}
-              >
-                Senior Software Engineer
-              </span>
+              <span className={styles.badgeSpan}>{heroData.badge}</span>
             </div>
             
-            <h1 className={styles.mainTitle}>
-              Farruh Sheripov
-            </h1>
+            <h1 className={styles.mainTitle}>{heroData.name}</h1>
             
-            <h2 className={styles.subtitle}>
-              Python Backend Developer & Cloud Architect
-            </h2>
+            <h2 className={styles.subtitle}>{heroData.subtitle}</h2>
           </div>
 
           {/* Simple description */}
           <div className={styles.description}>
-            <p className={styles.descriptionText}>
-              Specialized in designing and implementing enterprise-grade backend systems using Django and Google Cloud Platform. 
-              Proven track record of delivering scalable solutions that drive business growth.
-            </p>
+            <p className={styles.descriptionText}>{heroData.description}</p>
           </div>
 
           {/* Clear, readable buttons */}
           <div className={styles.buttonContainer}>
             <button
               className={styles.primaryButton}
-              onClick={() => window.open('/farruh-sheripov-cv.pdf', '_blank')}
+              onClick={() => window.open(heroData.primaryButtonLink, '_blank')}
             >
               <Download className={styles.buttonIcon} />
-              Download Resume
+              {heroData.primaryButtonText}
             </button>
             <button
               className={styles.secondaryButton}
               onClick={scrollToContact}
             >
               <Mail className={styles.buttonIcon} />
-              Get In Touch
+              {heroData.secondaryButtonText}
             </button>
           </div>
 
           {/* Simple stats */}
           <div className={styles.stats}>
-            <div className={styles.statItem}>
-              <div className={`${styles.statNumber} ${styles.blue}`}>6+</div>
-              <div className={styles.statLabel}>Years Experience</div>
-            </div>
-            <div className={styles.statItem}>
-              <div className={`${styles.statNumber} ${styles.emerald}`}>50+</div>
-              <div className={styles.statLabel}>Projects Delivered</div>
-            </div>
-            <div className={styles.statItem}>
-              <div className={`${styles.statNumber} ${styles.purple}`}>10K+</div>
-              <div className={styles.statLabel}>Users Served</div>
-            </div>
+            {stats.map((s, idx) => {
+              const style: CustomCSSProperties = {
+                '--text-color': s.colorPalette.text,
+              };
+              return (
+                <div key={idx} className={styles.statItem}>
+                  <div className={styles.statNumber} style={style}>{s.number}</div>
+                  <div className={styles.statLabel}>{s.label}</div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Simple scroll indicator */}

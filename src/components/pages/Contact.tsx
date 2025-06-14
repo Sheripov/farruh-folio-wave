@@ -1,9 +1,61 @@
-import React, { useState } from 'react';
-import { Mail, Phone, Send, MapPin, Heart } from 'lucide-react';
-
+import React, { useState, useEffect, CSSProperties } from 'react';
+import {
+  Mail,
+  Phone,
+  Send,
+  MapPin,
+  Heart,
+  type LucideIcon,
+} from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
 import styles from './Contact.module.css';
+
+// ----------------------- Dynamic color palettes -----------------------
+const colorPalettes = [
+  { primary: '#a855f7', secondary: '#ec4899', text: '#d8b4fe' }, // violet-pink
+  { primary: '#3b82f6', secondary: '#8b5cf6', text: '#93c5fd' }, // blue-violet
+  { primary: '#ec4899', secondary: '#a855f7', text: '#f9a8d4' }, // pink-violet
+];
+
+// ----------------------- Icons map for JSON ---------------------------
+const iconsMap: Record<string, LucideIcon> = {
+  Mail,
+  Phone,
+  MapPin,
+};
+
+// ----------------------- Types ---------------------------------------
+interface ContactMethodJson {
+  icon: string;
+  title: string;
+  value: string;
+  link?: string;
+}
+
+interface ContactJson {
+  contactMethods: ContactMethodJson[];
+}
+
+interface ContactMethod {
+  icon: LucideIcon;
+  title: string;
+  value: string;
+  link?: string;
+  colorPalette: {
+    primary: string;
+    secondary: string;
+    text: string;
+  };
+}
+
+// Extend CSS Properties to support CSS variables for inline style
+interface CustomCSSProperties extends CSSProperties {
+  '--card-gradient'?: string;
+  '--text-color'?: string;
+  '--border-hover'?: string;
+  '--shadow-color'?: string;
+}
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +64,63 @@ export const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [methods, setMethods] = useState<ContactMethod[]>([]);
   const { toast } = useToast();
+
+  // Load contact methods from JSON
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const response = await fetch('/data/contact.json');
+        if (!response.ok) throw new Error(`Failed to fetch contact: ${response.status}`);
+        const data: ContactJson = await response.json();
+
+        const mapped: ContactMethod[] = data.contactMethods.map((item, idx) => ({
+          icon: iconsMap[item.icon] || Mail,
+          title: item.title,
+          value: item.value,
+          link: item.link,
+          colorPalette: colorPalettes[idx % colorPalettes.length],
+        }));
+
+        setMethods(mapped);
+      } catch (e) {
+        console.error('Error loading contact.json', e);
+      }
+    };
+
+    fetchContact();
+  }, []);
+
+  const renderMethods = () =>
+    methods.map((method, index) => {
+      const { primary, secondary, text } = method.colorPalette;
+      const style: CustomCSSProperties = {
+        '--card-gradient': `linear-gradient(135deg, ${primary}33 0%, ${secondary}33 100%)`,
+        '--text-color': text,
+        '--border-hover': `${primary}66`,
+        '--shadow-color': `${primary}33`,
+        animationDelay: `${index * 0.05}s`,
+      };
+
+      return (
+        <div key={index} className={styles.contactMethod} style={style}>
+          <div className={styles.methodIcon}>
+            <method.icon className={styles.methodSvg} />
+          </div>
+          <div className={styles.methodDetails}>
+            <h4>{method.title}</h4>
+            {method.link ? (
+              <a href={method.link} className={styles.methodLink} target={method.link.startsWith('http') ? '_blank' : undefined} rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                {method.value}
+              </a>
+            ) : (
+              <span className={styles.methodLink}>{method.value}</span>
+            )}
+          </div>
+        </div>
+      );
+    });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -83,47 +191,7 @@ export const Contact = () => {
                 Whether you have a project in mind or just want to say hello, I'd love to hear from you.
               </p>
               
-              <div className={styles.contactMethods}>
-                <div className={`${styles.contactMethod} ${styles.emailMethod}`}>
-                  <div className={`${styles.methodIcon} ${styles.emailIcon}`}>
-                    <Mail className={styles.mailIcon} />
-                  </div>
-                  <div className={styles.methodDetails}>
-                    <h4>Email</h4>
-                    <a 
-                      href="mailto:farruh.sheripov@fusioncode.org"
-                      className={styles.emailLink}
-                    >
-                      farruh.sheripov@fusioncode.org
-                    </a>
-                  </div>
-                </div>
-
-                <div className={`${styles.contactMethod} ${styles.phoneMethod}`}>
-                  <div className={`${styles.methodIcon} ${styles.phoneIcon}`}>
-                    <Phone className={styles.phoneIconSvg} />
-                  </div>
-                  <div className={styles.methodDetails}>
-                    <h4>Phone</h4>
-                    <a 
-                      href="tel:+48123456789"
-                      className={styles.phoneLink}
-                    >
-                      +48 123 456 789
-                    </a>
-                  </div>
-                </div>
-
-                <div className={`${styles.contactMethod} ${styles.locationMethod}`}>
-                  <div className={`${styles.methodIcon} ${styles.locationIcon}`}>
-                    <MapPin className={styles.mapIcon} />
-                  </div>
-                  <div className={styles.methodDetails}>
-                    <h4>Location</h4>
-                    <span className={styles.locationText}>Cracow, Poland</span>
-                  </div>
-                </div>
-              </div>
+              <div className={styles.contactMethods}>{renderMethods()}</div>
             </div>
           </div>
 

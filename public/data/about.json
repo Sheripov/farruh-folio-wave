@@ -1,0 +1,38 @@
+{
+  "personalInfo": [
+    {
+      "icon": "MapPin",
+      "title": "Location",
+      "value": "Kraków, Poland, 31-878",
+      "description": "Based in Kraków, Poland"
+    },
+    {
+      "icon": "Mail",
+      "title": "Email",
+      "value": "farruh.sheripov@fusioncode.org",
+      "description": "Let's connect and collaborate",
+      "link": "mailto:farruh.sheripov@fusioncode.org"
+    },
+    {
+      "icon": "ExternalLink",
+      "title": "LinkedIn",
+      "value": "linkedin.com/in/farruh-sheripov",
+      "description": "Professional networking",
+      "link": "https://www.linkedin.com/in/farruh-sheripov/"
+    },
+    {
+      "icon": "Globe",
+      "title": "Languages",
+      "value": "English, Russian, Turkmen",
+      "description": "Fluent in 3 languages"
+    }
+  ],
+  "interests": [
+    { "icon": "Zap", "text": "AI/ML Engineering", "color": "emerald" },
+    { "icon": "Lightbulb", "text": "NLP & LLMs", "color": "violet" },
+    { "icon": "Target", "text": "RAG & Vector Search", "color": "rose" },
+    { "icon": "Code", "text": "Backend & APIs", "color": "blue" },
+    { "icon": "Cloud", "text": "Cloud & DevOps", "color": "orange" },
+    { "icon": "Users", "text": "Leadership", "color": "purple" }
+  ]
+} 

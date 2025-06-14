@@ -1,0 +1,68 @@
+[
+  {
+    "company": "mühlemann+popp AG",
+    "title": "S3 Senior Backend Developer",
+    "dates": "Sep 2024 - Present",
+    "duration": "<1 year",
+    "type": "Full-time",
+    "location": "Poland (Remote)",
+    "achievements": [
+      "Designed and deployed secure microservice architecture using Django and FastAPI.",
+      "Integrated advanced NLP models (BERT-based) for PII detection (95%+ accuracy).",
+      "Implemented RAG pipelines with Haystack and LangChain, reducing latency by 40%.",
+      "Optimized vector search with FAISS/Qdrant, improving query performance by 30%.",
+      "Automated infrastructure with Terraform on GCP, reducing deployment times by 50%."
+    ],
+    "technologies": ["Django", "FastAPI", "Python", "GCP", "Terraform", "FAISS", "Qdrant", "LangChain", "Haystack"],
+    "color": "blue"
+  },
+  {
+    "company": "mühlemann+popp AG",
+    "title": "S2 Professional Python Developer",
+    "dates": "Jul 2022 - Sep 2024",
+    "duration": "2 years",
+    "type": "Full-time",
+    "location": "Poland (Remote)",
+    "achievements": [
+      "Led blockchain-based payment system for crowdfunding platform (smart contracts, crypto).",
+      "Integrated OchainLabs for on-chain transactions, real-time event tracking.",
+      "Developed RESTful APIs with Django REST Framework.",
+      "Implemented JWT and 2FA authentication, improving security and user trust.",
+      "Optimized database queries, reducing retrieval times by 60%."
+    ],
+    "technologies": ["Django", "DRF", "Python", "Blockchain", "OchainLabs", "JWT", "PostgreSQL", "Kubernetes"],
+    "color": "emerald"
+  },
+  {
+    "company": "mühlemann+popp AG",
+    "title": "S1 Professional Python Developer",
+    "dates": "Jan 2021 - Apr 2022",
+    "duration": "1 year 3 months",
+    "type": "Full-time",
+    "location": "Minsk (Remote)",
+    "achievements": [
+      "Designed backend architecture with Django/DRF for scalable platforms.",
+      "Engineered event-sourced data models for historical state replay.",
+      "Optimized PostgreSQL with materialized views, reducing query times by 70%.",
+      "Built real-time/scheduled data pipelines integrating Jira, GitHub, Slack, etc.",
+      "Led DevOps efforts on GCP (App Engine, Cloud Run), ensuring uptime and autoscaling."
+    ],
+    "technologies": ["Django", "DRF", "Python", "PostgreSQL", "GCP", "Pub/Sub", "Kubernetes", "CI/CD"],
+    "color": "purple"
+  },
+  {
+    "company": "Lyte",
+    "title": "Python Developer",
+    "dates": "Apr 2022 - Jul 2022",
+    "duration": "4 months",
+    "type": "Full-time",
+    "location": "Minsk",
+    "achievements": [
+      "Enhanced backend features and optimized performance for event ticketing platform.",
+      "Refactored legacy codebases, reducing technical debt.",
+      "Collaborated with cross-functional teams to implement new functionalities."
+    ],
+    "technologies": ["Python", "Django", "REST APIs", "Performance", "Teamwork"],
+    "color": "rose"
+  }
+] 

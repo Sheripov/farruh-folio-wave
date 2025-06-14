@@ -1,0 +1,21 @@
+{
+  "contactMethods": [
+    {
+      "icon": "Mail",
+      "title": "Email",
+      "value": "farruh.sheripov@fusioncode.org",
+      "link": "mailto:farruh.sheripov@fusioncode.org"
+    },
+    {
+      "icon": "Phone",
+      "title": "Phone",
+      "value": "+48 571 048 777",
+      "link": "tel:+48571048777"
+    },
+    {
+      "icon": "MapPin",
+      "title": "Location",
+      "value": "Kraków, Poland, 31-878"
+    }
+  ]
+} 

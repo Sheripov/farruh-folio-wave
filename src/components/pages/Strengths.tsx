@@ -1,34 +1,57 @@
-import React from 'react';
-import { Clock, Zap, Target, Lightbulb } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Clock, Zap, Target, Lightbulb, Users, Star, type LucideIcon } from 'lucide-react';
 import styles from './Strengths.module.css';
 
+// Icon map to resolve from JSON strings
+const iconsMap: Record<string, LucideIcon> = {
+  Clock,
+  Zap,
+  Target,
+  Lightbulb,
+  Users,
+  Star,
+};
+
+// JSON data type
+interface StrengthJson {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
+interface StrengthItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: string;
+}
+
 export const Strengths = () => {
-  const strengths = [
-    {
-      icon: Clock,
-      title: "Time Management",
-      description: "Efficient project planning and deadline adherence with proven track record of on-time deliveries.",
-      color: "emerald"
-    },
-    {
-      icon: Zap,
-      title: "Adaptability",
-      description: "Quick learner who thrives in dynamic environments and readily adopts new technologies and methodologies.",
-      color: "amber"
-    },
-    {
-      icon: Target,
-      title: "Accountability", 
-      description: "Takes ownership of projects from conception to deployment, ensuring quality and reliability.",
-      color: "rose"
-    },
-    {
-      icon: Lightbulb,
-      title: "Problem Solving",
-      description: "Analytical approach to complex challenges with creative solutions that drive business value.",
-      color: "violet"
-    }
-  ];
+  const [strengths, setStrengths] = useState<StrengthItem[]>([]);
+
+  useEffect(() => {
+    const fetchStrengths = async () => {
+      try {
+        const res = await fetch('/data/strengths.json');
+        if (!res.ok) throw new Error(`Failed to fetch strengths.json: ${res.status}`);
+        const data: StrengthJson[] = await res.json();
+        const mapped: StrengthItem[] = data.map((s) => ({
+          icon: iconsMap[s.icon] || Clock,
+          title: s.title,
+          description: s.description,
+          color: s.color,
+        }));
+        setStrengths(mapped);
+      } catch (e) {
+        console.error('Error loading strengths.json', e);
+      }
+    };
+
+    fetchStrengths();
+  }, []);
+
+  if (!strengths.length) return null;
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -59,9 +82,23 @@ export const Strengths = () => {
         icon: styles.violetIcon,
         title: styles.violetTitle,
         dot: styles.violetDot
+      },
+      blue: {
+        gradient: styles.blueGradient,
+        iconWrapper: styles.blueIconWrapper,
+        icon: styles.blueIcon,
+        title: styles.blueTitle,
+        dot: styles.blueDot
+      },
+      purple: {
+        gradient: styles.purpleGradient,
+        iconWrapper: styles.purpleIconWrapper,
+        icon: styles.purpleIcon,
+        title: styles.purpleTitle,
+        dot: styles.purpleDot
       }
     };
-    return colorMap[color as keyof typeof colorMap];
+    return colorMap[color as keyof typeof colorMap] || colorMap.emerald;
   };
 
   return (

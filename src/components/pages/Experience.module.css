@@ -193,6 +193,14 @@
   background: rgb(196, 181, 253);
 }
 
+.roseDot {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.roseDotInner {
+  background: rgb(251, 113, 133);
+}
+
 .experienceCard {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(12px);
@@ -231,6 +239,10 @@
 
 .purpleOverlay {
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.roseOverlay {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
 }
 
 .shimmerEffect {
@@ -313,6 +325,14 @@
   border-color: rgba(168, 85, 247, 0.2);
 }
 
+.roseIcon {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.experienceCard:hover .roseIcon {
+  border-color: rgba(244, 63, 94, 0.2);
+}
+
 .icon {
   height: 1.25rem;
   width: 1.25rem;
@@ -328,6 +348,10 @@
 
 .purpleIconColor {
   color: rgb(196, 181, 253);
+}
+
+.roseIconColor {
+  color: rgb(251, 113, 133);
 }
 
 .jobTitle {
@@ -349,6 +373,10 @@
   color: rgb(196, 181, 253);
 }
 
+.experienceCard:hover .roseTitle {
+  color: rgb(251, 113, 133);
+}
+
 .companyName {
   font-size: 1.25rem;
   font-weight: 600;
@@ -368,6 +396,10 @@
   color: rgb(196, 181, 253);
 }
 
+.roseCompany {
+  color: rgb(251, 113, 133);
+}
+
 .experienceCard:hover .blueCompany {
   color: white;
 }
@@ -377,6 +409,10 @@
 }
 
 .experienceCard:hover .purpleCompany {
+  color: white;
+}
+
+.experienceCard:hover .roseCompany {
   color: white;
 }
 
@@ -440,6 +476,15 @@
   border-color: rgba(168, 85, 247, 0.4);
 }
 
+.roseBadge {
+  color: rgb(251, 113, 133);
+  background: linear-gradient(to right, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.experienceCard:hover .roseBadge {
+  border-color: rgba(244, 63, 94, 0.4);
+}
+
 .infoBadges {
   display: flex;
   gap: 0.5rem;
@@ -477,6 +522,10 @@
 
 .purpleSectionTitle {
   color: rgb(196, 181, 253);
+}
+
+.roseSectionTitle {
+  color: rgb(251, 113, 133);
 }
 
 .sectionIcon {
@@ -520,6 +569,10 @@
   background: rgb(196, 181, 253);
 }
 
+.roseBullet {
+  background: rgb(251, 113, 133);
+}
+
 .achievementText {
   color: rgb(209, 213, 219);
   line-height: 1.75;
@@ -528,6 +581,10 @@
 
 .achievementItem:hover .achievementText {
   color: rgb(229, 231, 235);
+}
+
+.experienceCard:hover .roseText {
+  color: rgb(251, 113, 133);
 }
 
 .technologiesSection {
@@ -568,6 +625,11 @@
 .purpleTech:hover {
   border-color: rgba(196, 181, 253, 0.3);
   box-shadow: 0 1px 3px 0 rgba(168, 85, 247, 0.2);
+}
+
+.roseTech:hover {
+  border-color: rgba(251, 113, 133, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(244, 63, 94, 0.2);
 }
 
 .decorativeElements {
@@ -612,4 +674,8 @@
 
 .purpleDecor {
   background: rgb(196, 181, 253);
+}
+
+.roseDecor {
+  background: rgb(251, 113, 133);
 } 

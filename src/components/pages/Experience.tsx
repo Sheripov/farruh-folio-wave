@@ -1,58 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Briefcase, Calendar, TrendingUp, Users, Award, Star } from 'lucide-react';
 import styles from './Experience.module.css';
 
+// ----------------- Types -----------------
+interface ExperienceData {
+  company: string;
+  title: string;
+  dates: string;
+  duration: string;
+  type: string;
+  location: string;
+  achievements: string[];
+  technologies: string[];
+  color: string;
+}
+
 export const Experience = () => {
-  const experiences = [
-    {
-      company: "FusionCode Technologies",
-      title: "Senior Python Developer",
-      dates: "2021 - Present",
-      duration: "3+ years",
-      type: "Full-time",
-      location: "Remote",
-      achievements: [
-        "Led development of multiple enterprise-level Django applications serving 10K+ users",
-        "Architected microservices on Google Cloud Platform reducing infrastructure costs by 40%",
-        "Mentored junior developers and established coding standards that improved team productivity by 30%",
-        "Implemented automated testing and CI/CD pipelines improving deployment reliability by 95%"
-      ],
-      technologies: ["Django", "GCP", "PostgreSQL", "Docker", "Kubernetes", "Terraform"],
-      color: "blue"
-    },
-    {
-      company: "TechFlow Solutions",
-      title: "Python Developer",
-      dates: "2019 - 2021",
-      duration: "2 years",
-      type: "Full-time",
-      location: "Hybrid",
-      achievements: [
-        "Built and maintained REST APIs using Django REST Framework for mobile and web applications",
-        "Implemented CI/CD pipelines reducing deployment time from hours to minutes",
-        "Optimized database queries resulting in 60% performance improvement in critical endpoints",
-        "Collaborated with frontend teams to deliver seamless user experiences"
-      ],
-      technologies: ["Django REST", "PostgreSQL", "Redis", "Docker", "Jenkins", "AWS"],
-      color: "emerald"
-    },
-    {
-      company: "Digital Innovations Ltd",
-      title: "Junior Python Developer",
-      dates: "2017 - 2019",
-      duration: "2 years",
-      type: "Full-time",
-      location: "On-site",
-      achievements: [
-        "Developed web applications using Django framework following agile methodologies",
-        "Collaborated with cross-functional teams to deliver features on time and within budget",
-        "Contributed to open-source projects and gained experience with modern development practices",
-        "Participated in code reviews and learned best practices from senior developers"
-      ],
-      technologies: ["Django", "MySQL", "JavaScript", "Git", "Linux", "Agile"],
-      color: "purple"
-    }
-  ];
+  const [experiences, setExperiences] = useState<ExperienceData[]>([]);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch('/data/experience.json');
+        if (!response.ok) throw new Error(`Failed to fetch experiences: ${response.status}`);
+        const data: ExperienceData[] = await response.json();
+        setExperiences(data);
+      } catch (e) {
+        console.error('Error loading experience.json', e);
+      }
+    };
+
+    fetchExperiences();
+  }, []);
+
+  if (!experiences.length) {
+    return null; // or loading placeholder
+  }
 
   return (
     <section id="experience" className={styles.experience}>

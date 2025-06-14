@@ -114,36 +114,16 @@
   transition: all 0.5s ease;
   overflow: hidden;
   position: relative;
+  /* Dynamic vars */
+  --card-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+  --text-color: #93c5fd;
+  --border-hover: rgba(59, 130, 246, 0.4);
+  --shadow-color: rgba(59, 130, 246, 0.2);
 }
 
 .categoryCard:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transform: translateY(-0.25rem);
-}
-
-/* Background gradient overlays for different categories */
-.categoryCard.blue .gradientOverlay {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
-}
-
-.categoryCard.emerald .gradientOverlay {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
-}
-
-.categoryCard.purple .gradientOverlay {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.2));
-}
-
-.categoryCard.orange .gradientOverlay {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
-}
-
-.categoryCard.rose .gradientOverlay {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
-}
-
-.categoryCard.indigo .gradientOverlay {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(59, 130, 246, 0.2));
 }
 
 .gradientOverlay {
@@ -152,6 +132,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 1rem;
+  background: var(--card-gradient);
 }
 
 .categoryCard:hover .gradientOverlay {
@@ -174,94 +155,20 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-}
-
-.categoryCard.blue .iconContainer {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
-}
-
-.categoryCard.emerald .iconContainer {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
-}
-
-.categoryCard.purple .iconContainer {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.2));
-}
-
-.categoryCard.orange .iconContainer {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
-}
-
-.categoryCard.rose .iconContainer {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(236, 72, 153, 0.2));
-}
-
-.categoryCard.indigo .iconContainer {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(59, 130, 246, 0.2));
+  background: var(--card-gradient);
 }
 
 .categoryCard:hover .iconContainer {
   transform: scale(1.1);
-}
-
-.categoryCard.blue:hover .iconContainer {
-  border-color: rgba(96, 165, 250, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
-}
-
-.categoryCard.emerald:hover .iconContainer {
-  border-color: rgba(52, 211, 153, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
-}
-
-.categoryCard.purple:hover .iconContainer {
-  border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2);
-}
-
-.categoryCard.orange:hover .iconContainer {
-  border-color: rgba(251, 146, 60, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
-}
-
-.categoryCard.rose:hover .iconContainer {
-  border-color: rgba(244, 63, 94, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.2);
-}
-
-.categoryCard.indigo:hover .iconContainer {
-  border-color: rgba(129, 140, 248, 0.4);
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 15px -3px var(--shadow-color);
 }
 
 .categoryIcon {
   height: 1.5rem;
   width: 1.5rem;
   transition: transform 0.3s ease;
-}
-
-.categoryCard.blue .categoryIcon {
-  color: rgb(147, 197, 253);
-}
-
-.categoryCard.emerald .categoryIcon {
-  color: rgb(110, 231, 183);
-}
-
-.categoryCard.purple .categoryIcon {
-  color: rgb(196, 181, 253);
-}
-
-.categoryCard.orange .categoryIcon {
-  color: rgb(253, 186, 116);
-}
-
-.categoryCard.rose .categoryIcon {
-  color: rgb(251, 113, 133);
-}
-
-.categoryCard.indigo .categoryIcon {
-  color: rgb(165, 180, 252);
+  color: var(--text-color);
 }
 
 .categoryCard:hover .categoryIcon {
@@ -271,32 +178,12 @@
 .categoryTitle {
   font-size: 1.125rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-color);
   transition: color 0.3s ease;
 }
 
-.categoryCard.blue:hover .categoryTitle {
-  color: rgb(147, 197, 253);
-}
-
-.categoryCard.emerald:hover .categoryTitle {
-  color: rgb(110, 231, 183);
-}
-
-.categoryCard.purple:hover .categoryTitle {
-  color: rgb(196, 181, 253);
-}
-
-.categoryCard.orange:hover .categoryTitle {
-  color: rgb(253, 186, 116);
-}
-
-.categoryCard.rose:hover .categoryTitle {
-  color: rgb(251, 113, 133);
-}
-
-.categoryCard.indigo:hover .categoryTitle {
-  color: rgb(165, 180, 252);
+.categoryCard:hover .categoryTitle {
+  color: white;
 }
 
 /* Skills List */
@@ -319,34 +206,9 @@
   transition: all 0.3s ease;
 }
 
-.categoryCard.blue .skillItem:hover {
-  border-color: rgba(147, 197, 253, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.2);
-}
-
-.categoryCard.emerald .skillItem:hover {
-  border-color: rgba(110, 231, 183, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.2);
-}
-
-.categoryCard.purple .skillItem:hover {
-  border-color: rgba(196, 181, 253, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(168, 85, 247, 0.2);
-}
-
-.categoryCard.orange .skillItem:hover {
-  border-color: rgba(253, 186, 116, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(249, 115, 22, 0.2);
-}
-
-.categoryCard.rose .skillItem:hover {
-  border-color: rgba(251, 113, 133, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(244, 63, 94, 0.2);
-}
-
-.categoryCard.indigo .skillItem:hover {
-  border-color: rgba(165, 180, 252, 0.3);
-  box-shadow: 0 1px 3px 0 rgba(99, 102, 241, 0.2);
+.skillItem:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 1px 3px 0 var(--shadow-color);
 }
 
 .skillDot {
@@ -354,30 +216,7 @@
   height: 0.5rem;
   border-radius: 50%;
   transition: transform 0.3s ease;
-}
-
-.categoryCard.blue .skillDot {
-  background-color: rgb(147, 197, 253);
-}
-
-.categoryCard.emerald .skillDot {
-  background-color: rgb(110, 231, 183);
-}
-
-.categoryCard.purple .skillDot {
-  background-color: rgb(196, 181, 253);
-}
-
-.categoryCard.orange .skillDot {
-  background-color: rgb(253, 186, 116);
-}
-
-.categoryCard.rose .skillDot {
-  background-color: rgb(251, 113, 133);
-}
-
-.categoryCard.indigo .skillDot {
-  background-color: rgb(165, 180, 252);
+  background-color: var(--text-color);
 }
 
 .skillItem:hover .skillDot {
@@ -405,30 +244,7 @@
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.categoryCard.blue .decorativeDot {
-  background-color: rgb(147, 197, 253);
-}
-
-.categoryCard.emerald .decorativeDot {
-  background-color: rgb(110, 231, 183);
-}
-
-.categoryCard.purple .decorativeDot {
-  background-color: rgb(196, 181, 253);
-}
-
-.categoryCard.orange .decorativeDot {
-  background-color: rgb(253, 186, 116);
-}
-
-.categoryCard.rose .decorativeDot {
-  background-color: rgb(251, 113, 133);
-}
-
-.categoryCard.indigo .decorativeDot {
-  background-color: rgb(165, 180, 252);
+  background-color: var(--text-color);
 }
 
 .categoryCard:hover .decorativeDot {

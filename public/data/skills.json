@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "Zap",
+    "title": "AI/ML & NLP",
+    "skills": ["NLP", "LLMs", "RAG pipelines", "RAGAS", "NER", "PII Redaction", "Hugging Face", "Transformers", "LangChain", "Haystack", "LlamaIndex"]
+  },
+  {
+    "icon": "Code",
+    "title": "Backend & APIs",
+    "skills": ["Python", "Django", "FastAPI", "Flask", "RESTful APIs", "API Design", "SQLAlchemy"]
+  },
+  {
+    "icon": "Database",
+    "title": "Databases & Vector Search",
+    "skills": ["PostgreSQL", "MongoDB", "SQLite", "ClickHouse", "Firestore", "FAISS", "Qdrant", "ChromaDB"]
+  },
+  {
+    "icon": "Cloud",
+    "title": "Cloud & DevOps",
+    "skills": ["GCP", "AWS", "Docker", "Kubernetes", "Terraform", "CI/CD", "Cloud Run", "Pub/Sub"]
+  },
+  {
+    "icon": "Star",
+    "title": "Specializations & Tools",
+    "skills": ["Data Engineering", "Celery", "Pandas", "NumPy", "Testing", "Performance Optimization", "Materialized Views"]
+  },
+  {
+    "icon": "Wrench",
+    "title": "Blockchain & Leadership",
+    "skills": ["Web3", "Smart Contracts", "Crypto Integration", "Technical Staff Management", "Team Leadership"]
+  }
+] 
