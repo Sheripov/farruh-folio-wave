@@ -1,5 +1,5 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
-import { ExternalLink, Github, Calendar, Users, Code, Zap, Star, Rocket } from 'lucide-react';
+import { ExternalLink, Github, Calendar, Users, Code, Zap } from 'lucide-react';
 import { TiltCard, TiltCardProps } from '@/components/shared/TiltCard';
 import styles from './Project.module.css';
 
@@ -22,12 +22,14 @@ interface ProjectData {
   description: string;
   technologies: string[];
   category: string;
-  year: string;
-  team: string;
-  duration: string;
+  impact: string;
+  role: string;
+  challenges: string;
   highlights: string[];
-  github: string;
-  demo: string;
+  github?: string;
+  demo?: string;
+  hideCode?: boolean;
+  hideDemo?: boolean;
   colorPalette?: {
     primary: string;
     secondary: string;
@@ -119,9 +121,6 @@ export const Projects = () => {
                         <span className={styles.categoryBadge}>
                           {project.category}
                         </span>
-                        <div className={styles.iconContainer}>
-                          <Rocket className={styles.icon} />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -129,16 +128,8 @@ export const Projects = () => {
                   {/* Project Info */}
                   <div className={styles.projectInfo}>
                     <div className={styles.infoItem}>
-                      <Calendar className={styles.infoIcon} />
-                      <span>{project.year}</span>
-                    </div>
-                    <div className={styles.infoItem}>
                       <Users className={styles.infoIcon} />
-                      <span>{project.team}</span>
-                    </div>
-                    <div className={styles.infoItem}>
-                      <Zap className={styles.infoIcon} />
-                      <span>{project.duration}</span>
+                      <span>{project.role}</span>
                     </div>
                   </div>
 
@@ -146,6 +137,28 @@ export const Projects = () => {
                   <p className={styles.description}>
                     {project.description}
                   </p>
+                  
+                  {/* Impact */}
+                  <div className={styles.impactSection}>
+                    <h4 className={styles.sectionTitle}>
+                      <Zap className={styles.infoIcon} />
+                      Impact
+                    </h4>
+                    <p className={styles.impactText}>
+                      {project.impact}
+                    </p>
+                  </div>
+                  
+                  {/* Challenges */}
+                  <div className={styles.challengesSection}>
+                    <h4 className={styles.sectionTitle}>
+                      <Calendar className={styles.infoIcon} />
+                      Challenges
+                    </h4>
+                    <p className={styles.challengesText}>
+                      {project.challenges}
+                    </p>
+                  </div>
 
                   {/* Key Highlights */}
                   <div className={styles.highlightsSection}>
@@ -163,38 +176,45 @@ export const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Technologies */}
-                  <div className={styles.technologies}>
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className={styles.techTag}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Bottom Section: technologies + links */}
+                  <div className={styles.bottomSection}>
+                    {/* Technologies */}
+                    <div className={styles.technologies}>
+                      {project.technologies.map((tech, idx) => (
+                        <span key={idx} className={styles.techTag}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
 
-                  {/* Links */}
-                  <div className={styles.links}>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.link}
-                    >
-                      <Github className={styles.linkIcon} />
-                      Code
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.link}
-                    >
-                      <ExternalLink className={styles.linkIcon} />
-                      Demo
-                    </a>
+                    {/* Links */}
+                    {(!project.hideCode || !project.hideDemo) && (
+                      <div className={styles.links}>
+                        {(!project.hideCode) && (project.github ? (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                            <Github className={styles.linkIcon} />
+                            Code
+                          </a>
+                        ) : (
+                          <span className={`${styles.link} ${styles.linkDisabled}`}>
+                            <Github className={styles.linkIcon} />
+                            Code
+                          </span>
+                        ))}
+
+                        {(!project.hideDemo) && (project.demo ? (
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                            <ExternalLink className={styles.linkIcon} />
+                            Demo
+                          </a>
+                        ) : (
+                          <span className={`${styles.link} ${styles.linkDisabled}`}>
+                            <ExternalLink className={styles.linkIcon} />
+                            Demo
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
 

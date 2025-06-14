@@ -35,6 +35,7 @@ interface ContactMethodJson {
 
 interface ContactJson {
   contactMethods: ContactMethodJson[];
+  showContactForm: boolean;
 }
 
 interface ContactMethod {
@@ -65,6 +66,7 @@ export const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [methods, setMethods] = useState<ContactMethod[]>([]);
+  const [showContactForm, setShowContactForm] = useState(true);
   const { toast } = useToast();
 
   // Load contact methods from JSON
@@ -84,6 +86,7 @@ export const Contact = () => {
         }));
 
         setMethods(mapped);
+        setShowContactForm(data.showContactForm);
       } catch (e) {
         console.error('Error loading contact.json', e);
       }
@@ -178,7 +181,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className={styles.contentGrid}>
+        <div className={`${styles.contentGrid} ${!showContactForm ? styles.singleColumn : ''}`}>
           {/* Contact Information */}
           <div className={styles.contactInfo}>
             <div className={styles.infoCard}>
@@ -195,80 +198,83 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className={styles.formCard}>
-            <h3 className={styles.formTitle}>Send me a message</h3>
-            
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  autoComplete="name"
-                  className={styles.input}
-                  placeholder="John Doe"
-                />
-              </div>
+          {/* Contact Form - Conditionally rendered */}
+          {showContactForm && (
+            <div className={styles.formCard}>
+              <h3 className={styles.formTitle}>Send me a message</h3>
+              
+              <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="name">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    autoComplete="name"
+                    className={styles.input}
+                    placeholder="John Doe"
+                  />
+                </div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="email">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  autoComplete="email"
-                  className={styles.input}
-                  placeholder="john@example.com"
-                />
-              </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    autoComplete="email"
+                    className={styles.input}
+                    placeholder="john@example.com"
+                  />
+                </div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="message">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className={styles.textarea}
-                  placeholder="Tell me about your project or how I can help you..."
-                />
-              </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className={styles.textarea}
+                    placeholder="Tell me about your project or how I can help you..."
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.submitButton}
-              >
-                {isSubmitting ? (
-                  <div className={styles.buttonContent}>
-                    <div className={styles.spinner}></div>
-                    Sending...
-                  </div>
-                ) : (
-                  <div className={styles.buttonContent}>
-                    <Send className={styles.sendIcon} />
-                    Send Message
-                  </div>
-                )}
-              </button>
-            </form>
-          </div>
+                <button 
+                  type="submit" 
+                  className={styles.submitButton}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <span className={styles.submitting}>
+                      <span className={styles.loadingDot}></span>
+                      <span className={styles.loadingDot}></span>
+                      <span className={styles.loadingDot}></span>
+                    </span>
+                  ) : (
+                    <>
+                      <Send className={styles.sendIcon} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </section>

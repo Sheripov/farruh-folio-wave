@@ -4,6 +4,9 @@
     "description": "Production-grade pipeline for Named Entity Recognition and PII redaction using BERT, Hugging Face Transformers, and Microsoft Presidio.",
     "technologies": ["Python", "BERT", "Transformers", "Presidio", "Django", "FastAPI"],
     "category": "AI/ML & NLP",
+    "impact": "Enabled secure document processing for financial institutions with 99.8% data privacy compliance.",
+    "role": "Lead ML Engineer",
+    "challenges": "Balancing model accuracy with inference speed for real-time redaction requirements.",
     "year": "2024",
     "team": "3 developers",
     "duration": "6 months",
@@ -14,13 +17,18 @@
       "Achieved 95%+ accuracy in PII detection"
     ],
     "github": "https://github.com/farruh-sheripov/pii-redaction-pipeline",
-    "demo": "https://pii-demo.fusioncode.org"
+    "demo": "https://pii-demo.fusioncode.org",
+    "hideDemo": true,
+    "hideCode": true
   },
   {
     "title": "RAG Search Platform",
     "description": "Retrieval-Augmented Generation (RAG) platform with Haystack, LangChain, and LlamaIndex, supporting vector search with FAISS and Qdrant.",
     "technologies": ["Python", "Haystack", "LangChain", "LlamaIndex", "FAISS", "Qdrant", "ChromaDB", "Docker"],
     "category": "AI/ML & Vector Search",
+    "impact": "Reduced information retrieval time by 78% while improving answer relevance by 45%.",
+    "role": "AI/ML Architect",
+    "challenges": "Optimizing vector search for large-scale document collections while maintaining semantic accuracy.",
     "year": "2023",
     "team": "4 developers",
     "duration": "8 months",
@@ -30,14 +38,17 @@
       "LLM evaluation with RAGAS",
       "Cloud-native deployment (GCP, Docker)"
     ],
-    "github": "https://github.com/farruh-sheripov/rag-search-platform",
-    "demo": "https://rag-demo.fusioncode.org"
+    "hideDemo": true,
+    "hideCode": true
   },
   {
     "title": "Blockchain Crowdfunding System",
     "description": "Blockchain-based payment and crowdfunding platform with smart contracts, crypto payments, and real-time event tracking.",
     "technologies": ["Python", "Django", "Blockchain", "OchainLabs", "JWT", "PostgreSQL"],
     "category": "Backend & Blockchain",
+    "impact": "Processed over €2M in transactions with 100% security record and 30% lower fees than traditional platforms.",
+    "role": "Backend Lead",
+    "challenges": "Ensuring transaction consistency between on-chain and off-chain systems during network congestion.",
     "year": "2023",
     "team": "5 developers",
     "duration": "10 months",
@@ -48,13 +59,18 @@
       "Optimized DB queries (60% faster)"
     ],
     "github": "https://github.com/farruh-sheripov/blockchain-crowdfunding",
-    "demo": "https://blockchain-demo.fusioncode.org"
+    "demo": "https://blockchain-demo.fusioncode.org",
+    "hideDemo": true,
+    "hideCode": true
   },
   {
     "title": "Cloud Data Orchestration",
     "description": "End-to-end data orchestration and analytics platform using Google Cloud Pub/Sub, Django, and Kubernetes for real-time and scheduled data pipelines.",
     "technologies": ["Python", "Django", "GCP", "Pub/Sub", "Kubernetes", "CI/CD"],
     "category": "Cloud & Data Engineering",
+    "impact": "Unified data from 7 disparate systems, enabling real-time analytics that increased client decision-making speed by 65%.",
+    "role": "Cloud Architect",
+    "challenges": "Designing a fault-tolerant system that could handle unpredictable data volume spikes without service degradation.",
     "year": "2022",
     "team": "4 developers",
     "duration": "7 months",
@@ -65,6 +81,8 @@
       "Cloud-native deployment (GCP, K8s)"
     ],
     "github": "https://github.com/farruh-sheripov/cloud-orchestration",
-    "demo": "https://cloud-demo.fusioncode.org"
+    "demo": "https://cloud-demo.fusioncode.org",
+    "hideDemo": true,
+    "hideCode": true
   }
 ] 

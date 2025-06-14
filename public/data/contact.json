@@ -1,4 +1,5 @@
 {
+  "showContactForm": false,
   "contactMethods": [
     {
       "icon": "Mail",

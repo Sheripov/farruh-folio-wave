@@ -1,30 +1,16 @@
 {
   "personalInfo": [
     {
-      "icon": "MapPin",
-      "title": "Location",
-      "value": "Kraków, Poland, 31-878",
-      "description": "Based in Kraków, Poland"
+      "icon": "Star",
+      "title": "Core Tech Stack",
+      "value": "Python · Django · GCP",
+      "description": "Favourite tools for building scalable solutions"
     },
     {
-      "icon": "Mail",
-      "title": "Email",
-      "value": "farruh.sheripov@fusioncode.org",
-      "description": "Let's connect and collaborate",
-      "link": "mailto:farruh.sheripov@fusioncode.org"
-    },
-    {
-      "icon": "ExternalLink",
-      "title": "LinkedIn",
-      "value": "linkedin.com/in/farruh-sheripov",
-      "description": "Professional networking",
-      "link": "https://www.linkedin.com/in/farruh-sheripov/"
-    },
-    {
-      "icon": "Globe",
-      "title": "Languages",
-      "value": "English, Russian, Turkmen",
-      "description": "Fluent in 3 languages"
+      "icon": "Briefcase",
+      "title": "Industries",
+      "value": "FinTech · Healthcare · E-commerce",
+      "description": "Diverse experience across multiple domains"
     }
   ],
   "interests": [
@@ -34,5 +20,20 @@
     { "icon": "Code", "text": "Backend & APIs", "color": "blue" },
     { "icon": "Cloud", "text": "Cloud & DevOps", "color": "orange" },
     { "icon": "Users", "text": "Leadership", "color": "purple" }
+  ],
+  "stats": [
+    { "number": "5", "label": "Open Source Contributions", "color": "blue" }
+  ],
+  "bio": [
+    "I'm a [[results-driven|blue]] AI/ML Engineer with a strong backend foundation and deep specialization in [[NLP and LLMs|emerald]].",
+    "My expertise lies in developing [[RAG pipelines|purple]], implementing [[vector search solutions|orange]], and architecting [[scalable cloud-native deployments|blue]] that solve real business challenges.",
+    "I'm passionate about creating [[production-grade AI systems|emerald]] that blend cutting-edge research with robust engineering practices to deliver measurable business impact.",
+    "Beyond coding, I enjoy [[mentoring junior engineers|purple]], [[contributing to open-source|orange]], and staying at the forefront of AI advancements through continuous learning."
+  ],
+  "achievements": [
+    "Led the development of a high-performance RAG system that reduced customer query resolution time by 78%",
+    "Architected a scalable NLP pipeline processing 2M+ documents daily with 99.9% uptime",
+    "Reduced infrastructure costs by 40% through optimized cloud resource utilization",
+    "Mentored 10+ junior engineers who have progressed to senior roles"
   ]
 } 

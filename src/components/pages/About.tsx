@@ -11,6 +11,13 @@ import {
   User,
   Globe,
   Calendar,
+  Award,
+  Briefcase,
+  Lightbulb,
+  Target,
+  Cloud,
+  Users,
+  CheckCircle,
   type LucideIcon,
 } from 'lucide-react';
 import styles from './About.module.css';
@@ -42,6 +49,13 @@ const iconsMap: Record<string, LucideIcon> = {
   User,
   Globe,
   Calendar,
+  Award,
+  Briefcase,
+  Lightbulb,
+  Target,
+  Cloud,
+  Users,
+  CheckCircle,
 };
 
 // ------------ Types for JSON -----------
@@ -62,6 +76,9 @@ interface InterestJson {
 interface AboutJson {
   personalInfo: PersonalInfoJson[];
   interests: InterestJson[];
+  stats: { number: string; label: string; color: string }[];
+  bio: string[];
+  achievements: string[];
 }
 
 // ------------ Component state interfaces (with resolved icons) -----------
@@ -84,6 +101,12 @@ interface InterestItem {
   color: string;
 }
 
+interface StatItem {
+  number: string;
+  label: string;
+  color: string;
+}
+
 // Extend CSS Properties to support CSS variables
 interface CustomCSSProperties extends CSSProperties {
   '--card-gradient'?: string;
@@ -93,18 +116,45 @@ interface CustomCSSProperties extends CSSProperties {
   '--title-hover-color'?: string;
 }
 
+// Utility to convert [[text|color]] markup to highlighted JSX
+const parseHighlight = (paragraph: string) => {
+  const regex = /\[\[(.*?)\|(.*?)\]\]/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(paragraph)) !== null) {
+    const [full, text, color] = match;
+    if (match.index > lastIndex) {
+      parts.push(paragraph.slice(lastIndex, match.index));
+    }
+    const cls = styles[`highlight${color.charAt(0).toUpperCase() + color.slice(1)}`] || undefined;
+    parts.push(<span key={parts.length} className={cls}>{text}</span>);
+    lastIndex = match.index + full.length;
+  }
+  parts.push(paragraph.slice(lastIndex));
+  return parts;
+};
+
+// helper to render paragraph with [[text|color]] markup
 export const About = () => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo[]>([]);
   const [interests, setInterests] = useState<InterestItem[]>([]);
+  const [stats, setStats] = useState<StatItem[]>([]);
+  const [bio, setBio] = useState<string[]>([]);
+  const [achievements, setAchievements] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch('/data/about.json');
         if (!response.ok) {
           throw new Error(`Failed to fetch about data: ${response.status}`);
         }
         const data: AboutJson = await response.json();
+        console.log("About data loaded:", data);
 
         // Map personal info
         const mappedPersonalInfo: PersonalInfo[] = data.personalInfo.map((item, idx) => ({
@@ -125,8 +175,16 @@ export const About = () => {
 
         setPersonalInfo(mappedPersonalInfo);
         setInterests(mappedInterests);
+        setStats(data.stats || []);
+        setBio(data.bio || []);
+        setAchievements(data.achievements || []);
+        console.log("Stats:", data.stats);
+        console.log("Achievements:", data.achievements);
       } catch (err) {
         console.error('Error loading about data:', err);
+        setError('Failed to load about data');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -134,12 +192,26 @@ export const About = () => {
   }, []);
 
   // If data hasn't loaded yet, render nothing (or a placeholder if desired)
-  if (!personalInfo.length) {
-    return null;
+  if (isLoading) {
+    return <div className={styles.loading}>Loading about information...</div>;
   }
 
-  // Attach color palettes dynamically (they are already attached in mapping)
-  const infoWithColors = personalInfo;
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  // If no personal info was loaded, something went wrong
+  if (!personalInfo.length) {
+    return <div className={styles.error}>No personal information available</div>;
+  }
+
+  console.log("Rendering About section with:", {
+    personalInfoCount: personalInfo.length,
+    interestsCount: interests.length,
+    statsCount: stats.length,
+    bioCount: bio.length,
+    achievementsCount: achievements.length
+  });
 
   return (
     <section id="about" className={styles.aboutSection}>
@@ -174,15 +246,9 @@ export const About = () => {
                   </div>
                   
                   <div className={styles.profileDescription}>
-                    <p>
-                      I'm a passionate <span className={styles.highlightBlue}>Python developer</span> with extensive experience in building scalable backend systems using Django and Google Cloud Platform.
-                    </p>
-                    <p>
-                      I specialize in creating <span className={styles.highlightEmerald}>robust APIs</span>, implementing <span className={styles.highlightPurple}>microservices architectures</span>, and optimizing application performance for real-world business needs.
-                    </p>
-                    <p>
-                      With a strong focus on <span className={styles.highlightOrange}>clean code</span> and best practices, I enjoy solving complex problems and mentoring fellow developers.
-                    </p>
+                    {bio.map((paragraph, idx) => (
+                      <p key={idx}>{parseHighlight(paragraph)}</p>
+                    ))}
                   </div>
 
                   {/* Interests */}
@@ -207,23 +273,12 @@ export const About = () => {
                 {/* Decorative elements */}
                 <div className={styles.profileCardDecorative}></div>
               </div>
-
-              {/* Quick Stats */}
-              <div className={styles.quickStats}>
-                <div className={styles.statCard}>
-                  <div className={`${styles.statNumber} ${styles.statNumberEmerald}`}>6+</div>
-                  <div className={styles.statLabel}>Years Experience</div>
-                </div>
-                <div className={styles.statCard}>
-                  <div className={`${styles.statNumber} ${styles.statNumberPurple}`}>50+</div>
-                  <div className={styles.statLabel}>Projects Completed</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Column - Contact Info */}
+            {/* Right Column - Professional Info */}
             <div className={styles.rightColumn}>
-              {infoWithColors.map((info, index) => {
+              {/* Professional Info Cards */}
+              {personalInfo.map((info, index) => {
                 const { primary, secondary, text } = info.colorPalette || colorPalettes[0];
                 const cardStyle: CustomCSSProperties = {
                   '--card-gradient': `linear-gradient(135deg, ${primary}33 0%, ${secondary}33 100%)`,
@@ -269,6 +324,36 @@ export const About = () => {
                   </div>
                 );
               })}
+
+              {/* Key Achievements */}
+              {achievements && achievements.length > 0 && (
+                <div className={styles.achievementsSection}>
+                  <h4 className={styles.achievementsTitle}>
+                    <Award className={styles.achievementsTitleIcon} />
+                    Key Achievements
+                  </h4>
+                  <div className={styles.achievementsList}>
+                    {achievements.map((achievement, idx) => (
+                      <div key={idx} className={styles.achievementItem}>
+                        <CheckCircle className={styles.achievementIcon} />
+                        <span className={styles.achievementText}>{achievement}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Open Source Contributions */}
+              {stats && stats.length > 0 && (
+                <div className={styles.quickStats}>
+                  {stats.map((stat, idx) => (
+                    <div key={idx} className={styles.statCard}>
+                      <div className={`${styles.statNumber} ${styles[`statNumber${stat.color.charAt(0).toUpperCase() + stat.color.slice(1)}`]}`}>{stat.number}</div>
+                      <div className={styles.statLabel}>{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
