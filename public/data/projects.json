@@ -4,7 +4,7 @@
     "description": "Production-grade pipeline for Named Entity Recognition and PII redaction using BERT, Hugging Face Transformers, and Microsoft Presidio.",
     "technologies": ["Python", "BERT", "Transformers", "Presidio", "Django", "FastAPI"],
     "category": "AI/ML & NLP",
-    "impact": "Enabled secure document processing for financial institutions with 99.8% data privacy compliance.",
+    "impact": "Enabled secure document processing for financial institutions with 99.8% data privacy compliance and 95%+ accuracy in PII detection.",
     "role": "Lead ML Engineer",
     "challenges": "Balancing model accuracy with inference speed for real-time redaction requirements.",
     "year": "2024",
@@ -24,9 +24,9 @@
   {
     "title": "RAG Search Platform",
     "description": "Retrieval-Augmented Generation (RAG) platform with Haystack, LangChain, and LlamaIndex, supporting vector search with FAISS and Qdrant.",
-    "technologies": ["Python", "Haystack", "LangChain", "LlamaIndex", "FAISS", "Qdrant", "ChromaDB", "Docker"],
+    "technologies": ["Python", "Haystack", "LangChain", "LlamaIndex", "FAISS", "Qdrant", "ChromaDB", "Docker", "RAGAS"],
     "category": "AI/ML & Vector Search",
-    "impact": "Reduced information retrieval time by 78% while improving answer relevance by 45%.",
+    "impact": "Reduced information retrieval time by 78% while improving answer relevance by 45%, with comprehensive evaluation using RAGAS.",
     "role": "AI/ML Architect",
     "challenges": "Optimizing vector search for large-scale document collections while maintaining semantic accuracy.",
     "year": "2023",
@@ -44,9 +44,9 @@
   {
     "title": "Blockchain Crowdfunding System",
     "description": "Blockchain-based payment and crowdfunding platform with smart contracts, crypto payments, and real-time event tracking.",
-    "technologies": ["Python", "Django", "Blockchain", "OchainLabs", "JWT", "PostgreSQL"],
+    "technologies": ["Python", "Django", "Blockchain", "OchainLabs", "JWT", "PostgreSQL", "Web3"],
     "category": "Backend & Blockchain",
-    "impact": "Processed over €2M in transactions with 100% security record and 30% lower fees than traditional platforms.",
+    "impact": "Processed over €2M in transactions with 100% security record and 30% lower fees than traditional platforms, supporting 10,000+ users.",
     "role": "Backend Lead",
     "challenges": "Ensuring transaction consistency between on-chain and off-chain systems during network congestion.",
     "year": "2023",
@@ -66,7 +66,7 @@
   {
     "title": "Cloud Data Orchestration",
     "description": "End-to-end data orchestration and analytics platform using Google Cloud Pub/Sub, Django, and Kubernetes for real-time and scheduled data pipelines.",
-    "technologies": ["Python", "Django", "GCP", "Pub/Sub", "Kubernetes", "CI/CD"],
+    "technologies": ["Python", "Django", "GCP", "Pub/Sub", "Kubernetes", "CI/CD", "App Engine", "Cloud Run"],
     "category": "Cloud & Data Engineering",
     "impact": "Unified data from 7 disparate systems, enabling real-time analytics that increased client decision-making speed by 65%.",
     "role": "Cloud Architect",
@@ -76,7 +76,7 @@
     "duration": "7 months",
     "highlights": [
       "Real-time/scheduled data pipelines",
-      "Integration with Jira, GitHub, Slack",
+      "Integration with Jira, GitHub, GitLab, Slack, Confluence",
       "Event-sourced data models",
       "Cloud-native deployment (GCP, K8s)"
     ],

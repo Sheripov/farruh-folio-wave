@@ -11,9 +11,10 @@
       "Integrated advanced NLP models (BERT-based) for PII detection (95%+ accuracy).",
       "Implemented RAG pipelines with Haystack and LangChain, reducing latency by 40%.",
       "Optimized vector search with FAISS/Qdrant, improving query performance by 30%.",
-      "Automated infrastructure with Terraform on GCP, reducing deployment times by 50%."
+      "Automated infrastructure with Terraform on GCP, reducing deployment times by 50%.",
+      "Established comprehensive evaluation workflows using Ragas for continuous monitoring and improvement."
     ],
-    "technologies": ["Django", "FastAPI", "Python", "GCP", "Terraform", "FAISS", "Qdrant", "LangChain", "Haystack"],
+    "technologies": ["Django", "FastAPI", "Python", "GCP", "Terraform", "FAISS", "Qdrant", "LangChain", "Haystack", "Ragas"],
     "color": "blue"
   },
   {
@@ -25,30 +26,14 @@
     "location": "Poland (Remote)",
     "achievements": [
       "Led blockchain-based payment system for crowdfunding platform (smart contracts, crypto).",
-      "Integrated OchainLabs for on-chain transactions, real-time event tracking.",
+      "Integrated OchainLabs for on-chain transactions, real-time event tracking for 10,000+ users.",
       "Developed RESTful APIs with Django REST Framework.",
       "Implemented JWT and 2FA authentication, improving security and user trust.",
-      "Optimized database queries, reducing retrieval times by 60%."
+      "Optimized database queries, reducing retrieval times by 60%.",
+      "Collaborated in DevOps processes, configuring Kubernetes deployments and managing CI/CD pipelines."
     ],
-    "technologies": ["Django", "DRF", "Python", "Blockchain", "OchainLabs", "JWT", "PostgreSQL", "Kubernetes"],
+    "technologies": ["Django", "DRF", "Python", "Blockchain", "OchainLabs", "JWT", "PostgreSQL", "Kubernetes", "CI/CD"],
     "color": "emerald"
-  },
-  {
-    "company": "mühlemann+popp AG",
-    "title": "S1 Professional Python Developer",
-    "dates": "Jan 2021 - Apr 2022",
-    "duration": "1 year 3 months",
-    "type": "Full-time",
-    "location": "Minsk (Remote)",
-    "achievements": [
-      "Designed backend architecture with Django/DRF for scalable platforms.",
-      "Engineered event-sourced data models for historical state replay.",
-      "Optimized PostgreSQL with materialized views, reducing query times by 70%.",
-      "Built real-time/scheduled data pipelines integrating Jira, GitHub, Slack, etc.",
-      "Led DevOps efforts on GCP (App Engine, Cloud Run), ensuring uptime and autoscaling."
-    ],
-    "technologies": ["Django", "DRF", "Python", "PostgreSQL", "GCP", "Pub/Sub", "Kubernetes", "CI/CD"],
-    "color": "purple"
   },
   {
     "company": "Lyte",
@@ -58,11 +43,45 @@
     "type": "Full-time",
     "location": "Minsk",
     "achievements": [
-      "Enhanced backend features and optimized performance for event ticketing platform.",
+      "Enhanced backend features and optimized performance for event ticketing platform, improving page load times by 15%.",
       "Refactored legacy codebases, reducing technical debt.",
-      "Collaborated with cross-functional teams to implement new functionalities."
+      "Collaborated with cross-functional teams to implement new functionalities, improving user engagement."
     ],
-    "technologies": ["Python", "Django", "REST APIs", "Performance", "Teamwork"],
+    "technologies": ["Python", "Django", "REST APIs", "Performance Optimization", "Teamwork"],
     "color": "rose"
+  },
+  {
+    "company": "mühlemann+popp AG",
+    "title": "S1 Professional Python Developer",
+    "dates": "Jan 2021 - Apr 2022",
+    "duration": "1 year 3 months",
+    "type": "Full-time",
+    "location": "Minsk (Remote)",
+    "achievements": [
+      "Designed backend architecture with Django/DRF for scalable platforms used in production for 3+ years.",
+      "Engineered event-sourced data models for historical state replay with 100% data accuracy.",
+      "Optimized PostgreSQL with materialized views, reducing query times by 70%.",
+      "Built real-time/scheduled data pipelines integrating Jira, GitHub, GitLab, Tempo, Slack, Confluence.",
+      "Developed data orchestration layer using Google Cloud Pub/Sub for parallel ingestion and transformation.",
+      "Led DevOps efforts on GCP (App Engine, Cloud Run), ensuring uptime and autoscaling without downtime."
+    ],
+    "technologies": ["Django", "DRF", "Python", "PostgreSQL", "GCP", "Pub/Sub", "Kubernetes", "CI/CD", "App Engine", "Cloud Run"],
+    "color": "purple"
+  },
+  {
+    "company": "LLC \"ESC\"",
+    "title": "Head Of Technical Department",
+    "dates": "May 2018 - Sep 2020",
+    "duration": "2 years 4 months",
+    "type": "Full-time",
+    "location": "Minsk",
+    "achievements": [
+      "Led start-up efforts to build a new department from scratch, managing 22 technical specialists.",
+      "Trained, supervised, and coordinated employees' work on a daily basis.",
+      "Collaborated with purchasing and customer service departments to provide high-level customer service.",
+      "Resolved escalating technical issues to maintain operational efficiency."
+    ],
+    "technologies": ["Technical Leadership", "Staff Management", "Department Supervision", "Customer Service", "Problem Solving"],
+    "color": "amber"
   }
 ] 

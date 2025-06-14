@@ -2,31 +2,31 @@
   {
     "icon": "Zap",
     "title": "AI/ML & NLP",
-    "skills": ["NLP", "LLMs", "RAG pipelines", "RAGAS", "NER", "PII Redaction", "Hugging Face", "Transformers", "LangChain", "Haystack", "LlamaIndex"]
+    "skills": ["Natural Language Processing (NLP)", "LLMs", "RAG pipelines", "RAGAS", "NER", "PII Redaction", "Hugging Face Transformers", "LangChain", "Haystack", "LlamaIndex", "Multilingual NLP", "Fine-Tuning"]
   },
   {
     "icon": "Code",
     "title": "Backend & APIs",
-    "skills": ["Python", "Django", "FastAPI", "Flask", "RESTful APIs", "API Design", "SQLAlchemy"]
+    "skills": ["Python", "Django", "FastAPI", "Flask", "RESTful APIs", "API Development", "SQLAlchemy", "Python Ecosystem", "Pandas", "NumPy", "Celery"]
   },
   {
     "icon": "Database",
     "title": "Databases & Vector Search",
-    "skills": ["PostgreSQL", "MongoDB", "SQLite", "ClickHouse", "Firestore", "FAISS", "Qdrant", "ChromaDB"]
+    "skills": ["PostgreSQL", "MongoDB", "SQLite", "ClickHouse", "Firestore", "FAISS", "Qdrant", "ChromaDB", "SQL/NoSQL", "Database Optimization"]
   },
   {
     "icon": "Cloud",
     "title": "Cloud & DevOps",
-    "skills": ["GCP", "AWS", "Docker", "Kubernetes", "Terraform", "CI/CD", "Cloud Run", "Pub/Sub"]
+    "skills": ["GCP", "AWS", "Docker", "Kubernetes", "Terraform", "CI/CD", "Cloud Run", "Pub/Sub", "Cloud Functions", "Firebase", "App Engine"]
   },
   {
-    "icon": "Star",
-    "title": "Specializations & Tools",
-    "skills": ["Data Engineering", "Celery", "Pandas", "NumPy", "Testing", "Performance Optimization", "Materialized Views"]
+    "icon": "Layout",
+    "title": "Frontend & Full-Stack",
+    "skills": ["JavaScript", "Vue.js", "React", "Vite", "Nuxt"]
   },
   {
-    "icon": "Wrench",
+    "icon": "Link",
     "title": "Blockchain & Leadership",
-    "skills": ["Web3", "Smart Contracts", "Crypto Integration", "Technical Staff Management", "Team Leadership"]
+    "skills": ["Web3", "Smart Contracts", "Crypto Integration", "Technical Staff Management", "Team Leadership", "Department Supervision"]
   }
 ] 

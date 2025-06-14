@@ -17,6 +17,12 @@
       "icon": "MapPin",
       "title": "Location",
       "value": "Kraków, Poland, 31-878"
+    },
+    {
+      "icon": "Linkedin",
+      "title": "LinkedIn",
+      "value": "linkedin.com/in/farruh-sheripov",
+      "link": "https://www.linkedin.com/in/farruh-sheripov/"
     }
   ]
 } 
