@@ -24,7 +24,7 @@ const tiltCardStyles: Record<string, CSSProperties> = {
     willChange: 'transform',
     isolation: 'isolate' as const,
     contain: 'layout style paint' as const,
-    transition: 'box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    transition: 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
   },
   glare: {
     transform: 'translateZ(0)',
@@ -129,50 +129,22 @@ export const TiltCard: React.FC<TiltCardProps> = ({
     });
   }, [intensity, maxTilt, scale, perspective, glareEffect]);
 
-  // Reset card function
+  // Reset card function with smooth transitions
   const resetCard = useCallback((instant: boolean = false) => {
     const cardElement = containerRef.current;
     if (!cardElement) return;
 
-    // For instant reset (touch end), disable transitions temporarily
-    if (instant) {
-      cardElement.style.transition = 'none';
-      // Force reflow to apply transition: none immediately
-      cardElement.offsetHeight;
-    }
-    
-    // Reset transform completely
-    cardElement.style.transform = '';
+    // Always use smooth transitions for better UX
+    // Reset transform with smooth transition
+    cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1) translateZ(0)';
     cardElement.style.willChange = 'auto';
-    cardElement.style.transformStyle = '';
-    cardElement.style.backfaceVisibility = '';
     
     if (glareEffect) {
       const glareElement = cardElement.querySelector('.glare-effect') as HTMLElement;
       if (glareElement) {
-        if (instant) {
-          glareElement.style.transition = 'none';
-          // Force reflow
-          glareElement.offsetHeight;
-        }
         glareElement.style.opacity = '0';
         glareElement.style.willChange = 'auto';
       }
-    }
-    
-    // Re-enable transitions after a short delay for instant reset
-    if (instant) {
-      setTimeout(() => {
-        if (cardElement) {
-          cardElement.style.transition = '';
-          if (glareEffect) {
-            const glareElement = cardElement.querySelector('.glare-effect') as HTMLElement;
-            if (glareElement) {
-              glareElement.style.transition = '';
-            }
-          }
-        }
-      }, 10);
     }
 
     // Clear cache
@@ -198,11 +170,11 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   }, [handleTiltMove]);
 
   const handleTouchEnd = useCallback(() => {
-    resetCard(true);
+    resetCard(false); // Use smooth transition for touch end
   }, [resetCard]);
 
   const handleTouchCancel = useCallback(() => {
-    resetCard(true);
+    resetCard(false); // Use smooth transition for touch cancel
   }, [resetCard]);
 
   useEffect(() => {
