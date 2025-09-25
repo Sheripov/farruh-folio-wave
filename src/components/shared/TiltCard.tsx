@@ -120,7 +120,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
             const distance = Math.sqrt(centerX * centerX + centerY * centerY);
             const glareIntensity = Math.max(0, 1 - distance * 2) * 0.4;
             
-            glareElement.style.background = `radial-gradient(ellipse 800px 400px at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.08 * glareIntensity).toFixed(3)}) 110%, rgba(255, 255, 255, ${(0.04 * glareIntensity).toFixed(3)}) 30%, transparent 70%)`;
+            glareElement.style.background = `radial-gradient(ellipse 120% 80% at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.06 * glareIntensity).toFixed(3)}) 0%, rgba(255, 255, 255, ${(0.03 * glareIntensity).toFixed(3)}) 25%, transparent 50%)`;
             glareElement.style.opacity = '1';
             glareElement.style.willChange = 'opacity, background';
           }
@@ -279,13 +279,18 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         ...style,
         transform: 'none',
         willChange: 'auto',
-        backfaceVisibility: 'visible' as const
+        backfaceVisibility: 'visible' as const,
+        overflow: 'hidden',
+        position: 'relative'
       }}
     >
       {glareEffect && (
         <div 
-          className="glare-effect absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-inherit"
-          style={tiltCardStyles.glare}
+          className="glare-effect absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none"
+          style={{
+            ...tiltCardStyles.glare,
+            borderRadius: 'inherit'
+          }}
         />
       )}
       {children}
