@@ -12,3 +12,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://fusioncode.org/sitemap.xml
+Sitemap: https://fusioncode.org/sitemap.txt
