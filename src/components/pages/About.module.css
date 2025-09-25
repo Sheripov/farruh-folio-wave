@@ -129,10 +129,23 @@
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
+  /* Enhanced shadow effects */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .profileCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    0 35px 60px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px rgba(59, 130, 246, 0.3),
+    0 15px 35px -8px rgba(0, 0, 0, 0.4),
+    0 8px 20px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-8px);
 }
 
 .profileCardBgOverlay {
@@ -359,12 +372,24 @@
   transition: all 0.3s ease;
   display: inline-block;
   width: 100%;
+  /* Enhanced shadow effects */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .statCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 35px 60px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px rgba(59, 130, 246, 0.3),
+    0 15px 35px -8px rgba(0, 0, 0, 0.4),
+    0 8px 20px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .statNumber {
@@ -426,10 +451,23 @@
   overflow: hidden;
   animation: fadeIn 0.5s ease forwards;
   opacity: 0;
+  /* Enhanced shadow effects */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .contactCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    0 35px 60px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px var(--shadow-color),
+    0 15px 35px -8px rgba(0, 0, 0, 0.4),
+    0 8px 20px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-8px);
 }
 
 /* Gradient overlay now uses the CSS variable */

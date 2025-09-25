@@ -17,6 +17,12 @@
       "title": "Industries",
       "value": "FinTech · Healthcare · E-commerce",
       "description": "Diverse experience across multiple domains"
+    },
+    {
+      "icon": "Code",
+      "title": "Open Source Contributions",
+      "value": "5+ Projects · Active Contributor",
+      "description": "Contributing to open source projects and tech community"
     }
   ],
   "interests": [
@@ -27,9 +33,7 @@
     { "icon": "Cloud", "text": "Cloud & DevOps", "color": "orange" },
     { "icon": "Users", "text": "Leadership", "color": "purple" }
   ],
-  "stats": [
-    { "number": "5", "label": "Open Source Contributions", "color": "blue" }
-  ],
+  "stats": [],
   "bio": [
     "I'm a [[results-driven|blue]] AI/ML Engineer with a strong backend foundation and deep specialization in [[NLP and LLMs|emerald]].",
     "My expertise lies in developing [[RAG pipelines|purple]] with Haystack and LangChain, implementing [[vector search solutions|orange]] using FAISS and Qdrant, and architecting [[scalable cloud-native deployments|blue]] that solve real business challenges.",

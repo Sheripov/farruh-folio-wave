@@ -210,11 +210,23 @@
   transition: all 0.5s ease;
   overflow: hidden;
   position: relative;
+  /* Enhanced shadow effects */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .experienceCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-0.25rem);
+  box-shadow: 
+    0 35px 60px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px rgba(59, 130, 246, 0.3),
+    0 15px 35px -8px rgba(0, 0, 0, 0.4),
+    0 8px 20px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-8px);
 }
 
 .cardOverlay {
