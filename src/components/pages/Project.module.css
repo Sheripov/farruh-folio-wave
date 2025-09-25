@@ -88,8 +88,9 @@
 /* Projects Grid */
 .projectsGrid {
   display: grid;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap to accommodate larger shadows */
   margin-bottom: 4rem;
+  padding: 1rem; /* Add padding to prevent shadow clipping */
 }
 
 @media (min-width: 768px) {
@@ -108,6 +109,12 @@
   transition: all 0.5s ease;
   overflow: hidden;
   cursor: pointer;
+  /* Enhanced shadow effects */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   /* Default values for CSS variables */
   --card-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
   --text-color: #93c5fd;
@@ -116,7 +123,14 @@
 }
 
 .projectCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    0 35px 60px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px var(--shadow-color),
+    0 15px 35px -8px rgba(0, 0, 0, 0.4),
+    0 8px 20px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-8px);
 }
 
 /* Gradient Overlay */

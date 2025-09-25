@@ -24,7 +24,7 @@ const tiltCardStyles: Record<string, CSSProperties> = {
     willChange: 'transform',
     isolation: 'isolate' as const,
     contain: 'layout style paint' as const,
-    transition: 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    transition: 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
   },
   glare: {
     transform: 'translateZ(0)',
@@ -42,11 +42,11 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   children,
   className = '',
   style = {},
-  intensity = 0.8,
+  intensity = 1.0,
   glareEffect = true,
   maxTilt = 10,
-  scale = 0.00,
-  perspective = 10000
+  scale = 0.05,
+  perspective = 1000
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRectsCache = useRef<Map<HTMLElement, DOMRect>>(new Map());
@@ -94,9 +94,9 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         const tiltX = centerY * -maxTilt * currentIntensity;
         const tiltY = centerX * maxTilt * currentIntensity;
         
-        // Subtle translation effect
-        const translateX = centerX * 6 * currentIntensity;
-        const translateY = centerY * 6 * currentIntensity;
+        // Subtle translation effect - increased for more noticeable movement
+        const translateX = centerX * 60 * currentIntensity;
+        const translateY = centerY * 60 * currentIntensity;
         
         // Scale effect
         const scaleValue = 1 + (scale * currentIntensity);
@@ -108,6 +108,23 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         cardElement.style.willChange = 'transform';
         cardElement.style.transformStyle = 'preserve-3d';
         cardElement.style.backfaceVisibility = 'hidden';
+        
+        // Dynamic z-index based on tilt - tilted cards should be on top
+        const tiltMagnitude = Math.sqrt(tiltX * tiltX + tiltY * tiltY);
+        const zIndex = Math.floor(tiltMagnitude * 10) + 10; // Base z-index 10, increases with tilt
+        cardElement.style.zIndex = zIndex.toString();
+        
+        // Dynamic shadow based on tilt direction and intensity
+        const shadowOffsetX = tiltY * 2; // Opposite to tilt direction
+        const shadowOffsetY = Math.abs(tiltX) * 1.5 + 10; // More shadow when tilted
+        const shadowBlur = 20 + (tiltMagnitude * 3);
+        const shadowSpread = -5 + (tiltMagnitude * 0.5);
+        const shadowOpacity = 0.3 + (tiltMagnitude * 0.02);
+        
+        cardElement.style.boxShadow = `
+          ${shadowOffsetX.toFixed(1)}px ${shadowOffsetY.toFixed(1)}px ${shadowBlur.toFixed(1)}px ${shadowSpread.toFixed(1)}px rgba(0, 0, 0, ${shadowOpacity.toFixed(2)}),
+          0 ${(shadowOffsetY * 0.7).toFixed(1)}px ${(shadowBlur * 0.8).toFixed(1)}px ${(shadowSpread * 0.8).toFixed(1)}px rgba(0, 0, 0, ${(shadowOpacity * 0.6).toFixed(2)})
+        `.replace(/\s+/g, ' ').trim();
 
         // Glare effect with better performance
         if (glareEffect) {
@@ -116,11 +133,11 @@ export const TiltCard: React.FC<TiltCardProps> = ({
             const glareX = relativeX * 100;
             const glareY = relativeY * 100;
             
-            // Calculate distance from center for intensity
+            // Calculate distance from center for intensity - enhanced glare effect
             const distance = Math.sqrt(centerX * centerX + centerY * centerY);
-            const glareIntensity = Math.max(0, 1 - distance * 2) * 0.4;
+            const glareIntensity = Math.max(0, 1 - distance * 1.5) * 0.6;
             
-            glareElement.style.background = `radial-gradient(ellipse 120% 80% at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.06 * glareIntensity).toFixed(3)}) 0%, rgba(255, 255, 255, ${(0.03 * glareIntensity).toFixed(3)}) 25%, transparent 50%)`;
+            glareElement.style.background = `radial-gradient(ellipse 140% 100% at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(255, 255, 255, ${(0.12 * glareIntensity).toFixed(3)}) 0%, rgba(255, 255, 255, ${(0.06 * glareIntensity).toFixed(3)}) 25%, transparent 50%)`;
             glareElement.style.opacity = '1';
             glareElement.style.willChange = 'opacity, background';
           }
@@ -138,6 +155,12 @@ export const TiltCard: React.FC<TiltCardProps> = ({
     // Reset transform with smooth transition
     cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0px) translateY(0px) scale(1) translateZ(0)';
     cardElement.style.willChange = 'auto';
+    
+    // Reset z-index to default when not tilted
+    cardElement.style.zIndex = '1';
+    
+    // Reset box-shadow to default
+    cardElement.style.boxShadow = '';
     
     if (glareEffect) {
       const glareElement = cardElement.querySelector('.glare-effect') as HTMLElement;
@@ -253,7 +276,8 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         willChange: 'auto',
         backfaceVisibility: 'visible' as const,
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 1 // Default z-index
       }}
     >
       {glareEffect && (
