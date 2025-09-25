@@ -1,15 +1,15 @@
 # Section Components
 
 <cite>
-**Referenced Files in This Document **   
+**Referenced Files in This Document**   
 - [Hero.tsx](file://src/components/pages/Hero.tsx)
-- [About.tsx](file://src/components/pages/About.tsx)
+- [About.tsx](file://src/components/pages/About.tsx) - *Updated in recent commit*
 - [Experience.tsx](file://src/components/pages/Experience.tsx)
 - [Projects.tsx](file://src/components/pages/Projects.tsx)
 - [Skills.tsx](file://src/components/pages/Skills.tsx)
 - [Strengths.tsx](file://src/components/pages/Strengths.tsx)
 - [Education.tsx](file://src/components/pages/Education.tsx)
-- [Contact.tsx](file://src/components/pages/Contact.tsx)
+- [Contact.tsx](file://src/components/pages/Contact.tsx) - *Updated in recent commit*
 - [hero.json](file://public/data/hero.json)
 - [about.json](file://public/data/about.json)
 - [experience.json](file://public/data/experience.json)
@@ -19,6 +19,14 @@
 - [education.json](file://public/data/education.json)
 - [contact.json](file://public/data/contact.json)
 </cite>
+
+## Update Summary
+**Changes Made**   
+- Updated documentation for About and Contact sections to reflect new implementation details
+- Added detailed information about conditional form rendering in Contact component
+- Enhanced description of color palette application in both About and Contact components
+- Updated code examples to match current implementation
+- Added information about the `showContactForm` configuration flag
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -90,6 +98,15 @@ About --> "uses" iconsMap : resolves icon strings
 About --> "maps" PersonalInfoJson : to PersonalInfo
 About --> "maps" InterestJson : to InterestItem
 ```
+
+The component implements a robust data fetching pattern using React's useEffect hook to load data from `/data/about.json`. It processes the raw JSON by mapping string-based icon names to actual Lucide React components through the `iconsMap` object. The component also applies dynamic color palettes to each personal information card, cycling through a predefined array of color schemes.
+
+Key features include:
+- Dynamic color assignment using `colorPalettes` array
+- Icon resolution from JSON strings to React components
+- Text highlighting with `[[text|color]]` syntax support
+- Shimmer effects and hover animations on cards
+- Responsive grid layout that adapts to screen size
 
 **Section sources**
 - [About.tsx](file://src/components/pages/About.tsx#L1-L363)
@@ -271,7 +288,7 @@ The section includes:
 - Color-coordinated contact method cards
 
 ### Content Rendering Logic
-The component implements sophisticated form handling and conditional rendering:
+The component implements sophisticated form handling and conditional rendering based on the `showContactForm` flag in `contact.json`:
 
 ```mermaid
 flowchart TD
@@ -284,7 +301,14 @@ F --> G[Submit via mailto]
 G --> H[Open Email Client]
 ```
 
-Form submission uses the `mailto:` protocol with pre-filled subject and body, accompanied by toast notifications.
+The Contact component now features a configurable form display system. When `showContactForm` is set to `false` in `contact.json`, the component switches to a single-column layout optimized for direct contact methods. The form submission process uses the `mailto:` protocol with pre-filled subject and body, accompanied by toast notifications from the `useToast` hook. Each contact method card receives a unique color palette from the `colorPalettes` array, creating a visually diverse presentation.
+
+Key implementation details:
+- Conditional rendering of form based on JSON configuration
+- Dynamic color assignment using three predefined gradients
+- Toast notifications for user feedback
+- Loading state with animated dots during submission
+- Responsive layout that adapts when form is hidden
 
 **Section sources**
 - [Contact.tsx](file://src/components/pages/Contact.tsx#L1-L282)

@@ -5,8 +5,15 @@
 - [tailwind.config.ts](file://tailwind.config.ts)
 - [use-mobile.tsx](file://src/hooks/use-mobile.tsx)
 - [Navigation.tsx](file://src/components/layout/Navigation.tsx)
-- [TiltCard.tsx](file://src/components/shared/TiltCard.tsx)
+- [TiltCard.tsx](file://src/components/shared/TiltCard.tsx) - *Updated glare effect styling and container layout*
 </cite>
+
+## Update Summary
+**Changes Made**   
+- Updated documentation for TiltCard component to reflect changes in glare effect styling and container layout
+- Enhanced details on responsive interactions with focus on visual improvements
+- Added specific information about radial gradient configuration and container overflow handling
+- Updated section sources to reflect modified files
 
 ## Table of Contents
 1. [Introduction](#introduction)
