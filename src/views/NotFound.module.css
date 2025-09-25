@@ -1,0 +1,188 @@
+/* NotFound Component Styles */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgba(31, 41, 55, 0.5) 50%, rgb(15, 23, 42) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundElement1 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.backgroundElement2 {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(147, 51, 234, 0.05);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.content {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.numberContainer {
+  margin-bottom: 1rem;
+}
+
+.number {
+  font-size: 8rem;
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(96, 165, 250), rgb(168, 85, 247), rgb(236, 72, 153));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .number {
+    font-size: 9rem;
+  }
+}
+
+.divider {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, rgb(96, 165, 250), rgb(168, 85, 247));
+  border-radius: 9999px;
+  margin: 0 auto 2rem auto;
+}
+
+.textContent {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+.description {
+  color: rgb(156, 163, 175);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .buttonContainer {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background: rgb(37, 99, 235);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.primaryButton:hover {
+  background: rgb(29, 78, 216);
+  transform: scale(1.05);
+}
+
+.primaryButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgb(156, 163, 175);
+  color: rgb(209, 213, 219);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background: rgb(31, 41, 55);
+  color: white;
+  transform: scale(1.05);
+}
+
+.secondaryButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(156, 163, 175, 0.5);
+}
+
+.buttonIcon {
+  margin-right: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.dotsContainer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.dot:nth-child(1) {
+  background: rgb(96, 165, 250);
+}
+
+.dot:nth-child(2) {
+  background: rgb(168, 85, 247);
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  background: rgb(236, 72, 153);
+  animation-delay: 0.4s;
+}

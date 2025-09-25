@@ -1,6 +1,6 @@
 # Farruh Sheripov - Portfolio Website
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS, showcasing my experience as a Senior Python Developer and Cloud Architect.
+A modern, responsive portfolio website built with Vue 3, TypeScript, and Tailwind CSS, showcasing my experience as a Senior Python Developer and Cloud Architect.
 
 ## 🚀 Features
 
@@ -12,10 +12,13 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 18, TypeScript
-- **Styling**: Tailwind CSS, Radix UI components
+- **Frontend**: Vue 3, TypeScript, Composition API
+- **Styling**: Tailwind CSS, HeadlessUI Vue components
 - **Build Tool**: Vite
-- **Icons**: Lucide React
+- **Icons**: Lucide Vue Next
+- **State Management**: Pinia
+- **Routing**: Vue Router 4
+- **Data Fetching**: TanStack Vue Query
 - **Animations**: CSS animations with hardware acceleration
 
 ## 📱 Sections
@@ -110,7 +113,7 @@ To customize this portfolio for your own use:
 
 1. Update personal information in all components
 2. Replace the resume PDF file
-3. Update project information in `Projects.tsx`
+3. Update project information in Vue components
 4. Modify the color scheme in Tailwind classes
 5. Update meta tags in `index.html`
 6. Add your own project images

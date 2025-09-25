@@ -1,7 +1,36 @@
-import { ParallaxConfig } from './ParallaxBackground';
+// Parallax configuration types and presets for Vue 3
+
+export interface ParallaxConfig {
+  // Element configuration
+  particleCount?: number
+  particleSize?: number
+  particleOpacity?: number
+  
+  // Large shapes configuration
+  largeShapesOpacity?: number
+  largeShapesSizes?: [number, number, number, number, number] // [first, second, third, fourth, fifth]
+  
+  // Movement sensitivity
+  mouseIntensity?: number
+  scrollIntensity?: number
+  particleMouseSensitivity?: number
+  particleScrollSpeed?: number
+  
+  // Background settings
+  backgroundOpacity?: number
+  gradientOverlayOpacity?: number
+  gridOpacity?: number
+  
+  // Animation smoothness
+  mouseLerpFactor?: number
+  scrollLerpFactor?: number
+  
+  // Visual effects
+  blurIntensity?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+  gridSize?: number
+}
 
 // Predefined parallax configurations for different effects
-
 export const parallaxPresets = {
   // Subtle and minimal effect
   minimal: {
@@ -102,15 +131,15 @@ export const parallaxPresets = {
     blurIntensity: 'xl' as const,
     gridSize: 100,
   } satisfies ParallaxConfig,
-};
+}
 
 // Helper function to create custom config based on preset
 export const createParallaxConfig = (
   preset: keyof typeof parallaxPresets,
   overrides?: Partial<ParallaxConfig>
 ): ParallaxConfig => {
-  return { ...parallaxPresets[preset], ...overrides };
-};
+  return { ...parallaxPresets[preset], ...overrides }
+}
 
 // Export individual presets for convenience
 export const {
@@ -119,4 +148,4 @@ export const {
   intense,
   elegant,
   performance,
-} = parallaxPresets; 
+} = parallaxPresets
